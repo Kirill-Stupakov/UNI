@@ -168,6 +168,9 @@ void left_rotation(struct Node** current) {
     *current = y;
     (*current)->child[0] = x;
     (*current)->child[0]->child[1] = r;
+
+    height((*current)->child[0]);
+    height(*current);
 }
 
 void right_rotation(struct Node** current) {
@@ -179,6 +182,9 @@ void right_rotation(struct Node** current) {
     *current = y;
     (*current)->child[1] = x;
     (*current)->child[1]->child[0] = r;
+
+    height((*current)->child[1]);
+    height(*current);
 }
 
 void balance(struct Node** current) {
