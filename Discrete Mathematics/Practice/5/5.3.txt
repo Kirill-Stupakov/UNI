@@ -1,0 +1,9 @@
+$NNAAAS
+
+$        A       $A        AN       $AN        ANA       $ANA        ANAN       $ANAN        ANANA       $ANANA        ANANAS       $ANANAS
+N        A       NA        AN       NAN        ANA       NANA        ANAS       NANAS        ANAS$       NANAS$        ANAS$A       NANAS$A
+N  SORT  A  ADD  NA  SORT  AS  ADD  NAS  SORT  AS$  ADD  NAS$  SORT  AS$A  ADD  NAS$A  SORT  AS$AN  ADD  NAS$AN  SORT  AS$ANA  ADD  NAS$ANA
+A        N       AN        NA       ANA        NAN       ANAN        NANA       ANANA        NANAS       ANANAS        NANAS$       ANANAS$  <-  ORIGINAL STRING
+A        N       AN        NA       ANA        NAS       ANAS        NAS$       ANAS$        NAS$A       ANAS$A        NAS$AN       ANAS$AN
+A        S       AS        S$       AS$        S$A       AS$A        S$AN       AS$AN        S$ANA       AS$ANA        S$ANAN       AS$ANAN
+S        $       S$        $A       S$A        $AN       S$AN        $ANA       S$ANA        $ANAN       S$ANAN        $ANANA       S$ANANA
