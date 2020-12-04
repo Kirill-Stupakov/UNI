@@ -74,7 +74,7 @@ void _print(node* current, int offset) {
 }
 void print(tree* t) {
     if (t->root == NULL)
-        printf("Error: printing empty tree!\n");
+        printf("Tree is empty!\n");
     else
         _print(t->root, 0);
 }
