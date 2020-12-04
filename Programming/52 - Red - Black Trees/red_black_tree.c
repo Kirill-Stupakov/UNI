@@ -56,7 +56,7 @@ tree *new_tree() {
     return new;
 }
 
-void _print(node* current, int offset) {
+void _print(node *current, int offset) {
     if (current == NULL) {
         for (int i = 0; i < offset; i++)
             printf(" ");
@@ -72,7 +72,7 @@ void _print(node* current, int offset) {
 
     _print(current->child[1], offset + STEP);
 }
-void print(tree* t) {
+void print(tree *t) {
     if (t->root == NULL)
         printf("Tree is empty!\n");
     else
