@@ -3,6 +3,7 @@
 
 #define SIDE (key > current->key)
 #define SIDE_N (next->key > current->key)
+#define STEP 5
 
 enum colors {
     RED,
@@ -12,11 +13,11 @@ enum colors {
 typedef struct Node {
     int key;
     int value;
-    char color;
+    enum colors color;
     struct Node *child[2];
     struct Node *parent;
 } node;
-node *new_node(int key, int value, char color) {
+node *new_node(int key, int value, enum colors color) {
     node *new = (node*)malloc(sizeof(node));
     new->key = key;
     new->value = value;
@@ -59,16 +60,17 @@ void _print(node* current, int offset) {
     if (current == NULL) {
         for (int i = 0; i < offset; i++)
             printf(" ");
-        printf("-\n");
+        printf("  -\n");
+        return;
     }
 
-    _print(current->child[0]);
+    _print(current->child[0], offset + STEP);
 
     for (int i = 0; i < offset; i++)
         printf(" ");
     printf("%3d\n", current->key);
 
-    _print(current->child[1]);
+    _print(current->child[1], offset + STEP);
 }
 void print(tree* t) {
     if (t->root == NULL)
@@ -91,39 +93,43 @@ node *search(tree *t, int key) {
 }
 
 void left_rotation(node *current) {
-    node* x = current;
-    node* y = current->child[1];
-    node* g = current->child[1]->child[0];
+    node *x = current->child[1];
+    node *p = get_parent(current);
 
-    x->child[1] = g;
-    y->child[0] = x;
+    current->child[1] = x->child[0];
+    x->child[0] = current;
+    current->parent = x;
 
-    g->parent = x;
-    y->parent = x->parent;
-    x->parent = y;
-
-    if (x == y->parent->child[0])
-        y->parent->child[0] = y;
-    else
-        y->parent->child[1] = y;
+    if (current->child[1] != NULL)
+        current->child[1]->parent = current;
+    
+    if (p != NULL) {
+        if (current == p->child[0])
+            p->child[0] = x;
+        else
+            p->child[1] = x;
+    }
+    x->parent = p;
 }
 
 void right_rotation(node *current) {
-    node* x = current;
-    node* y = current->child[0];
-    node* g = current->child[0]->child[1];
+    node *x = current->child[0];
+    node *p = get_parent(current);
 
-    x->child[0] = g;
-    y->child[1] = x;
+    current->child[0] = x->child[1];
+    x->child[1] = current;
+    current->parent = x;
 
-    g->parent = x;
-    y->parent = x->parent;
-    x->parent = y;
-
-    if (x == y->parent->child[0])
-        y->parent->child[0] = y;
-    else
-        y->parent->child[1] = y;
+    if (current->child[0] != NULL)
+        current->child[0]->parent = current;
+    
+    if (p != NULL) {
+        if (current == p->child[0])
+            p->child[0] = x;
+        else
+            p->child[1] = x;
+    }
+    x->parent = p;
 }
 
 void _repair(node *current) {
@@ -177,6 +183,10 @@ void insert(tree *t, int key, int value) {
         _insert(t->root, next);
 
         _repair(next);
+
+        while (get_parent(next) != NULL)
+            next = get_parent(next);
+        t->root = next;
     }
 }
 
@@ -185,4 +195,11 @@ int main() {
 
     int x;
     scanf("%d", &x);
+    while (x) {
+        insert(t, x, 0);
+        printf("INSERTED!!\n");
+        print(t);
+        printf("\n\n");
+        scanf("%d", &x);
+    }
 }
