@@ -5,7 +5,7 @@
 \usepackage{amsmath, amsmath, amssymb, amsthm}
 \usepackage[margin=1in]{geometry}
 \usepackage[makeroom]{cancel}
-% \usepackage{hyperref}
+\usepackage{hyperref}
 
 \def\X{\mathbb{X}}
 \def\R{\mathbb{R}}
@@ -16,9 +16,12 @@
 \def\sp{\, \, \,}
 
 \def\linf{\lim \limits_{n \to \infty}}
+\def\lima{\lim \limits_{x \to a}}
+
 
 \begin{document}
     \tableofcontents \pagebreak
+    \noindent
 
 
     \section{Аксиоматика вещественных чисел}
@@ -119,7 +122,7 @@
     \end{enumerate}
 
     \section{Теорема о сжатой последовательности}
-    Теорема "о двух милиционерах": если $x_n \leq c_n \leq y_n \sp \forall n \in \N$ и $\linf x_n = a$; $\linf y_n = b$, тогда $c_n$ тоже сходится, причём $\linf c_n = a$.
+    Теорема ''о двух милиционерах'': если $x_n \leq c_n \leq y_n \sp \forall n \in \N$ и $\linf x_n = a$; $\linf y_n = b$, тогда $c_n$ тоже сходится, причём $\linf c_n = a$.
 
     \section{Предельный переход в неравенстве}
     Если $\linf x_n = a$ и $\linf y_n = b$ и $\exists N: \forall n > N \sp x_n \leq y_n$, то $a \leq b$.
@@ -187,8 +190,137 @@
     Расширенная теорема о монотонной последовательности: любая монотонная последовательность имеет предел (конечный или бесконечный).
 
     \section{Предел функции. Определение предела по Коши и по Гейне. Их эквивалентность.}
+    $E \in \R$\\
+    $f: E \to \R$; $a \in \R$ - точка сгущения $E$. Предел по Коши:
+    $$\lima f(x) = L \Leftrightarrow \forall \varepsilon > 0 \sp \exists \delta > 0 : \forall x \in \dot{\mathbf{V}}_{\delta}(a) \cap E \sp |f(x) - L| < \varepsilon$$
+    Эквивалентная переформулировка через окрестности:
+    $$\lima f(x) = L \Leftrightarrow \forall \mathbf{V}_{\varepsilon}(L) \sp \exists \dot{\mathbf{V}}_{\delta}(a) : x \in \dot{\mathbf{V}}_{\delta}(a) \Rightarrow f(x) \in \mathbf{V}_{\varepsilon}(L)$$
+    Определение предела по Гейне:
+    $$\lima f(x) = L \Leftrightarrow \forall \{x_n\}_{n = 1}^{\infty}: x_n \in E \setminus \{a\} \sp x_n \to A \Rightarrow f(x_n) \to L$$
+    Теорема: определения по Коши и Гейне равносильны.
+    
+    \section{Критерий Коши для предела функций}
+    $$\exists \lima f(X) \in \R \Leftrightarrow \forall \varepsilon > 0 \sp \exists \delta > 0: \forall x_1, x_2 \in \dot{\mathbf{V}}_{\delta}(a) \Rightarrow |f(x_1) - f(x_2)| < \varepsilon$$
 
+    \section{Предел функции и арифметические операции. Предельный переход в неравенстве}
+    $f,g : E \to \R$; $a$ - точка сгущения $E$.\\
+    Пусть $\lima f(x) = A$; $\lima g(x) = B$. Тогда:
+    $$\lima (f \pm g)(x) = A+B$$
+    $$\lima (fg)(x) = AB$$
+    $$\forall x \in E \sp B \neq 0, g(x) \neq 0 \Rightarrow \lima \left(\frac{f}{g}\right)(x) = \frac{A}{B}$$
 
+    \section{Первый замечательный предел}
+    $$\lim_{x \to 0} \frac{\sin x}{x} = 1$$
 
+    \section{Односторонние пределы. Предел монотонной функции}
+    $$\lim_{x \to a^+} f(x)= \lim_{x \to a^{+ 0}} f(x) = L \Leftrightarrow \forall \varepsilon > 0 \sp \exists \delta > 0 : \forall x \in E : 0 < x-a < \delta \sp |f(x) - L| < \varepsilon$$
+    $$\lima f(x) = L \Leftrightarrow \lim_{x \to a^+} f(x) = \lim_{x \to a^-} f(x) = L$$
 
+    Теорема о пределе монотонной функции: если $f : (a,b) \to \R$ не убывает, тогда:
+    $$\lim_{x \to a^+} f(x) = \inf \limits_{(a,b)} f$$
+    $$\lim_{x \to b^-} f(x) = \sup \limits_{(a,b)} f$$
+
+    \section{Существование и единственность корня степени $n$}
+    Пусть $n \in \N; a > 0$. Тогда $\exists ! \sp \xi > 0 : \xi ^n = a$
+
+    \section{Арифметические действия и предел. Единственность предела}
+    Уже было
+
+    \section{Определение показательной функции (леммы)}
+    $$\forall \varepsilon > 0 \sp \exists k \in \N : -\varepsilon < a^{-\frac{1}{k}} < a^{\frac{1}{k}} < 1 + \varepsilon$$
+    $$\lim_{\Q \ni t \to r} a^t = a^r , r \in \Q$$
+
+    \section{Логарифм. Степенная функция.}
+    Теорема о существовании $\log$: пусть $a > 1$. $\forall y \in \R^+ \sp \exists t: a^t = y$. $t := \log_a y$\\
+    Определение степенной функции: пусть $\alpha \in \R$. Тогда $x^{\alpha} := e^{\alpha \ln x}$
+
+    \section{Второй замечательный предел}
+    $$\lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = e$$
+    Следствия:
+    $$\lim_{t \to 0} (1+t)^{\frac{1}{t}} = e$$
+    $$\lim_{t \to 0} \frac{\log (1+t)}{t} = \lim_{t \to 0} \lg (1+t)^{\frac{1}{t}} = 1$$
+    $$\lim_{s \to 0} \frac{e^s - 1}{s} = \lim_{\alpha \to 0} \frac{\alpha}{\ln (1 + \alpha)} = 1$$
+
+    \section{Символы Ландау: O-большое, o-малое, эквивалентность. Их свойства}
+    $$f(x) = o(g(x)) \Leftrightarrow \exists \alpha : f(x) = \alpha (x) g(x), \alpha \text{ - бесконечно малая при } x \to a$$
+    $$f(x) = O(g(x)) \Leftrightarrow \exists U_a, \exists \varphi \text{ - огранич. на } \dot{U}_a : f(x) = \alpha (x) g(x)$$
+    $$f \sim g \sp (x \to a) \Leftrightarrow \exists \psi : f(x) = \psi (x) g(x), \psi (x) \to 1$$
+
+    $$f \sim g \Leftrightarrow f(x) = g(x) + o(g(x))$$
+    $$\alpha = o(\beta) \Rightarrow \alpha = O(\beta)$$
+    $$o(\alpha) \pm o(\alpha) = o(\alpha)$$
+    $$const * o(\beta) = o(\beta)$$
+    $$o(\alpha)o(\beta) = o(\alpha \beta)$$
+    
+
+    \section{Эквивалентные бесконечно малые. Замена на эквивалентное при вычислении пределов}
+    $\alpha \to 0$. Тогда:
+    $$\sin \alpha \sim \alpha$$
+    $$\ln (1 + \alpha) \sim \alpha$$
+    $$e^{\alpha} - 1 \sim \alpha$$
+    $$(1 + \alpha)^a - 1 \sim \alpha a$$
+    $$\tan \alpha \sim \alpha$$
+    $$1 - \cos \alpha \sim \frac{\alpha ^2}{2}$$
+    $$\arcsin \alpha \sim \alpha$$
+    $$\arctan \alpha \sim \alpha$$
+
+    Теорема о замене на эквивалентное при вычислении пределов:\\
+    Пусть $\alpha , \beta : E \to \R$, и $a$ - предельная точка $E$;\\
+    $\alpha \sim \tilde{\alpha}, \beta \sim \tilde{\beta}$ при $x \to a$\\
+    Тогда:
+    $$\lim_{x \to a} \alpha (x) \beta (x) = \lim_{x \to a} \tilde{\alpha} (x) \tilde{\beta} (x)$$
+    $$\lim_{x \to a} \frac{\alpha (x)}{\beta (x)} = \lim_{x \to a} \frac{\tilde{\alpha} (x)}{\tilde{\beta} (x)}$$
+
+    \section{Непрерывность. точки разрыва (их классификация). Примеры}
+    Определение непрерывности:
+    $$f \text{ непрерывна в точке } x_0 \Leftrightarrow \lim_{x \to x_0} f(x) = f(x_0)$$
+    Классификация точек разрыва:
+    \begin{enumerate}
+        \item Разрывы I рода
+        \begin{enumerate}
+            \item $\exists$ конечный придел $\lima f(x) \neq f(a)$ (или $f(a)$ не существует). Это называется устранимым разрывом\\
+            Устранение разрыва - переопределение или доопределение функции до непрерывной.
+            $$\tilde{f}(x) := \begin{cases}
+                f(x), \forall x \neq a \\
+                \lima f(x), x = a
+            \end{cases}$$
+            \begin{itemize}
+                \item $f(x) = \text{sign}^2 (x)$
+                \item $f(x) = \frac{x^2}{x}$
+            \end{itemize}
+            \item $\exists$ конечные односторонние пределы, но они не совпадают.
+            \begin{itemize}
+                \item $f(x) = \lfloor x \rfloor$
+                \item $f(x) = \{x\}$
+            \end{itemize}
+        \end{enumerate}
+        \item Все остальные
+        \begin{enumerate}
+            \item бесконечные пределы
+            \begin{itemize}
+                \item $f(x) = \frac{1}{x}$
+                \item $f(x) = \tan x$
+            \end{itemize}
+            \item нет предела в т. $a$
+            \begin{itemize}
+                \item $f(x) = \sin \frac{1}{x}$
+                \item $f(x) = (-1)^{\lfloor \frac{1}{x} \rfloor}$
+            \end{itemize}
+        \end{enumerate}
+        \begin{itemize}
+            \item Функция Дерехле
+            $$\mathbf{D}(x) = \begin{cases}
+                0, x \not\in \Q \\
+                1, x \in \Q
+            \end{cases}$$
+            \item Функция Римана
+            $$\mathbf{R}(x) = \begin{cases}
+                0, x \not\in \Q \\
+                \frac{1}{q}, x = \frac{p}{q} \in \Q
+            \end{cases}$$
+        \end{itemize}
+    \end{enumerate}
+
+    \section{Локальные свойства непрерывных функций}
+    
 \end{document}
