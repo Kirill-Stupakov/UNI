@@ -100,3 +100,8 @@ traverse
 tree
 uniform
 verices
+
+Key tactics of designing and implementing various algorithms for storing and searching for data are described.
+For some of them a C++ implementation is presented.
+Discrete mathematics and calculus are involved to prove the efficiency of given approaches.
+Example cases from the author's career are given for clarification.
