@@ -1,0 +1,194 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath, amsmath, amssymb, amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[makeroom]{cancel}
+% \usepackage{hyperref}
+
+\def\X{\mathbb{X}}
+\def\R{\mathbb{R}}
+\def\Q{\mathbb{Q}}
+\def\Z{\mathbb{Z}}
+\def\N{\mathbb{N}}
+
+\def\sp{\, \, \,}
+
+\def\linf{\lim \limits_{n \to \infty}}
+
+\begin{document}
+    \tableofcontents \pagebreak
+
+
+    \section{Аксиоматика вещественных чисел}
+    $\forall x,y \in \R$ существуют две бинарные операции:
+    $$+: \R \times \R \to \R$$
+    $$*: \R \times \R \to \R$$
+
+    Аксиомы $\R$:
+    \begin{enumerate}
+        \item $\exists 0 \in \R : \forall x \in \R \sp x + 0 = 0 + x = x$
+        \item $\forall x \in \R \sp \exists (-x) \in \R: x + (-x) = (-x) + x = 0$
+        \item $\forall x,y,z \in \R \sp x+(y+z)=(x+y)+z$
+        \item $\forall x,y \in \R \sp x+y = y+x$
+        \item $\exists 1 \in \R \setminus \{0\}: \forall x \in \R \sp x*1 = 1*x = x$
+        \item $\forall x \in \R \setminus \{0\} \sp \exists x^{-1}: x*x^{-1} = x^{-1}*x = 1$
+        \item $\forall x,y,z \in \R \sp x*(y*z)=(x*y)*z$
+        \item $\forall x,y \in \R \sp x*y = y*x$
+        \item $\forall x,y,z \in \R \sp (x+y)*z=xz + yz$
+        \item $x \leq x$
+        \item $x \leq y \land y \leq x \Rightarrow x = y$
+        \item $x \leq y \lor y \leq x$
+        \item $x \leq y \Rightarrow x+z \leq y+z$
+        \item $x \geq 0 \land y \geq 0 \Rightarrow xy \geq 0$
+        \item Если $X \subset \R$ и $Y \subset \R$ таковы, что $\forall x \in X \sp \forall y \in Y \sp x \leq y$, то $\exists c \in \R: \forall x \in X \sp \forall y \in Y \sp x \leq c \leq y$
+    \end{enumerate}
+
+    \section{Индуктивные множества. Натуральные числа. Метод математической индукции}
+    Множество $X \subset \R$ называют \textbf{индуктивным}, если $1 \in X$ и $\forall x \in X \Rightarrow x+1 \in X$\\
+    Множество натуральных чисел: $\displaystyle \N = \bigcap_{X \subset \R} X$, где $X$ - индуктивное множество.
+    
+    $\mathcal{P}(n)$ - некоторое утверждение, является верным или неверным в зависимости от $n$.\\
+    Принцип математической индукции: если $\mathcal{P}(1)$ - верно, и $\mathcal{P}(n) \Rightarrow \mathcal{P}(n+1)$, тогда $\mathcal{P}(n)$ - верно $\forall n \in \N$.
+
+    \section{Неравенство Бернулли. Принцип Архимеда}
+    Неравенство Бернулли: $(1+x)^n \geq 1+nx \sp \forall x > -1 \sp \forall n \in \N$. Причём равенство достигается только при $n = 1$ или $x = 0$.\\
+    Бином Ньютона: $\displaystyle (a+b)^n = \sum_{i=0}^n C_n^i a^i b^{n-i}$.
+
+    \section{Максимум и минимум. Супремум и инфимум}
+    $\max X = a \Leftrightarrow a \in X \land \forall x \in X \sp x \leq a$\\
+    $\min X = a \Leftrightarrow a \in X \land \forall x \in X \sp x \geq a$\\
+    Если $\max$ и $\min$ существуют, то они единственные.
+
+    $\sup X = \min \{c \in \R: \forall x \in X \sp x \leq c\} = a \Leftrightarrow (\forall x \in X \sp x \leq a) \land (\forall r < a \sp \exists x' \in X: r < x')$\\
+    Любое непустое ограниченное сверху множество $X \subset \R$ имеет $\sup$\\
+    $\inf X = \max \{c \in \R: \forall x \in X \sp x \geq c\} = a \Leftrightarrow (\forall x \in X \sp x \geq a) \land (\forall r > a \sp \exists x' \in X: r > x')$\\
+
+    Каждое ограниченное подмножество $E \subset \N$ имеет максимум. Множество $\N$ неограниченно сверху.
+
+    \section{Теорема о целой части. Принцип Архимеда.}
+    Теорема о целой части: $\forall x \in \R \sp \exists ! k \in \Z: k \leq x \leq k+1$.\\
+    Принцип Архимеда: $\forall \varepsilon > 0 , A > 0 \sp \exists n \in \N : n\varepsilon > A$.
+
+    \section{Плотность $\Q$ в $\R$ и $\R \setminus \Q$ в $\R$}
+    Плотность $\Q$ в $\R$: $\forall (a,b) \subset \R \sp \exists r \in \Q: a < r < b$.\\
+    Плотность $\R \setminus \Q$ в $\R$: $\forall (a,b) \subset \R \sp \exists t \in \R \setminus \Q : a < t < b$.
+
+    \section{Лемма Кантора о вложенных отрезках. Лемма о стягивающихся отрезках}
+    Лемма Кантора о вложенных отрезках: Каждая система вложенных отрезков имеет непустое перемечение. $ [a_1, b_1] \supset [a_2, b_2] \supset \cdots \supset \cdots \Rightarrow \bigcap_{n \in \N} [a_n, b_n] \neq \emptyset$. Для вложенных интервалов она не работает!\\
+    Лемма о стягивающихся отрезках: если в условиях леммы о вложенных отрезках\\$\forall \varepsilon > 0 \sp \exists n \in \N : b_n - a_n < \varepsilon$, то в пересечении $\bigcap_{n \in \N} [a_n,b_n]$ лежит ровно одна точка.
+
+    \section{Лемма Гейне-Бореля}
+    Говорят, что система множеств $\{G_{\alpha}\}_{\alpha \in A}$ покрывает множество $X \in \R$, если $X \subset \bigcup_{\alpha \in A} G_{\alpha}$.\\
+    Лемма Гейне-Бореля: из любого покрытия отрезка открытыми интервалами можно выделить конечное подпокрытие. Если $\{I_{\alpha}\}_{\alpha \in A}$, где $I_\alpha = (a_{\alpha}, b_{\alpha})$ покрывает $[c, d]$, то $\exists \alpha_1, \alpha_2, \cdots, \alpha_n \in A: [c,d] \subset \bigcup_{j=1}^N I_{\alpha_j}$.
+
+    \section{Точка сгущения. Лемма Больцано--Вейерштрасса.}
+    Интервал $V_{\delta} (x) = (x-\delta , x+\delta )$ называется $\delta$-окрестностью точки $x$.\\
+    $\dot{V}_{\delta} (x) = V_{\delta} (x) \setminus \{x\}$ называют проколотой окрестностью.\\
+    Точка $a \in \R$ называется точкой сгущения множества $X \subset \R$, если любая её проколотая окрестность содержит точку из множества $X$.\\
+    Лемма Больцано--Вейерштрасса: каждое бесконечное ограниченное множество $X \in \R$ имеет точку сгущения $a \in \R$.
+
+    \section{Равномощные множества. Счётные множества. Их свойства.}
+    Множество $X$ называется конечным, если существует биекция между $X$ и множеством $1, 2, \cdots , n$. При этом $n$ - количество элементов $X$. $n:= \# X$.\\
+    Множества $X$ и $Y$ называются равномощными, если между ними можно установить биекцию.\\
+    Множество $X$ называется счётным, если оно равномощно множеству $\N$.\\
+    Каждое бесконечное подмножество $\N_1 \subset \N$ счётно.
+    Свойства счётных множеств:
+    \begin{enumerate}
+        \item Если $X$ и $Y$ - счётные множества, то и $X \times Y$ - тоже счётное.
+        \item Пусть $X_{m_1}, X_{m_2}, \cdots, X_{m_n}, \cdots$ - счётное семейство свётных множеств. Тогда $\X = \bigcup_{m \in \N} X_m$ - счётно.
+    \end{enumerate}
+
+    \section{Теорема Кантора о несчётности множества точек отрезка}
+    $X=[0,1]$ не является счётным.\\
+    Говорят, что множество $X$ имеет мощность континуум, если $X$ равномощно $[0,1]$.
+
+    \section{Предел последовательности. Единственность предела. Ограниченность сходящейся последовательности.}
+    Говорят, что последовательность $\{a_n\}_{n=1}^{\infty}$ сходится к числу $A \in \R$ ($\linf a_n = A$), если $\forall \varepsilon > 0 \sp \exists N \in \N: \forall n \geq N \sp |a_n - A| < \varepsilon$.\\
+    Если последовательность имет предел, то говорят, что она сходится. Иначе, расходится.\\
+    Теорема: если предел существует, то он единственный.\\
+    Теорема: сходящаяся последовательность ограничена.\\
+
+    \section{Арифметические действия над сходящимися последовательностями}
+    Пусть $\linf x_n = a$; $\linf y_n = b$. Тогда:
+    \begin{enumerate}
+        \item $\linf (x_n \pm y_n) = a \pm b$
+        \item $\linf (x_n * y_n) = ab$
+        \item если $b \neq 0$, то $\linf \frac{x_n}{y_n} = \frac{a}{b}$.
+    \end{enumerate}
+
+    \section{Теорема о сжатой последовательности}
+    Теорема "о двух милиционерах": если $x_n \leq c_n \leq y_n \sp \forall n \in \N$ и $\linf x_n = a$; $\linf y_n = b$, тогда $c_n$ тоже сходится, причём $\linf c_n = a$.
+
+    \section{Предельный переход в неравенстве}
+    Если $\linf x_n = a$ и $\linf y_n = b$ и $\exists N: \forall n > N \sp x_n \leq y_n$, то $a \leq b$.
+    
+    \section{Предел монотонной последовательности}
+    $\{x_n\}_{n=1}^{\infty}$ - называется неубывающей, если $\forall n \sp x_n \leq x_{n+1}$\\
+    Теорема о монотонной последовательности: любая неубывающай ограниченная сверху последовательность имеет придел, причём $\linf x_n = \sup \{x_n: x \in \N\}$
+
+    \section{Определение числа $e$}
+    \[e = \linf \left(1+\frac{1}{n}\right)^n = \linf \left(1+\frac{1}{n}\right)^{n+1}\]
+
+    \section{Верхние и нижние пределы. Характеристика верхнего предела}
+    Пусть $\{x_n\}$ ограничена сверху и снизу.\\
+    Верхняя огибающая: $\overline{x}_n := \sup \limits_{m \geq n} x_m$.\\
+    Нижняя огибающая: $\underline{x}_n := \inf \limits_{m \geq n} x_m$.\\
+    \[\overline{\linf} x_n := \linf \overline{x_n} = \inf \limits_{n \in \N} \sup \limits_{m \geq n} x_m\]
+    \[\underline{\linf} x_n := \linf \underline{x_n} = \sup \limits_{n \in \N} \inf \limits_{m \geq n} x_m\]
+
+    Характеристика верхнего предела:
+    $$\overline{\linf} x_n = A \Leftrightarrow
+    \begin{cases}
+        \forall \varepsilon > 0 \sp \exists N: \forall n \geq N \sp x_n < A + \varepsilon \\
+        \forall \varepsilon > 0 \sp \forall N: \exists n > N: x_n > A - \varepsilon
+    \end{cases}$$
+
+    \section{Фундаментальность последовательности. Критерий Коши сходимости последовательности.}
+    Последовательность $\{x_n\}$ называется фундаментальной (или сходящейся в себе, или последовательностью Коши), если
+    $$\forall \varepsilon > 0 \sp \exists N: \forall m,n \geq N \sp |x_n - x_m| < \epsilon$$
+    Теорема Коши: последовательность $\{x_n\}, x_n \in \R$ сходится тогда и только тогда, когда она является фундаментальной.
+
+    \section{Подпоследовательность. Частичный предел. Теорема о верхнем и нижнем пределе последовательности}
+    Пусть $\{x_n\}_{n=1}^{\infty}$, $x_n \in \R$. Пусть $\{n_k\}_{k=1}^{\infty}: n_k \in \N , \forall k \sp n_k < n_k+1$.\\
+    Тогда последовательность $\{n_{n_k}\}_{k=1}^{\infty}$ называется подпоследовательностью последовательности $\{x_n\}$.\\
+    
+    Лемма: если $\linf x_n = A$, то любая подпоследовательность $\{x_{n_k}\}$ сходится к $A$: $\linf x_{n_k} = A$\\
+    
+    Число $a \in \R$ называется частичным пределом $\{x_n\}$, если существует подпоследовательность $\{x_{n_k}\}: \linf x_{n_k} = a$.
+    
+    Теорема о верхнем и нижнем пределе последовательности: $\{x_n\}: x_n \in \R$. Тогда:
+    \begin{enumerate}
+        \item $\overline{\linf} x_n$ равен наибольшему из всех частичных пределов.
+        \item последовательность $x_n$ сходится $\Leftrightarrow \overline{\linf} x_n = \underline{\linf} x_n = \linf x_n$
+    \end{enumerate}
+
+    \section{Предел последовательности в широком смысле. Расширенный вариант теоремы о монотонной последовательности.}
+    Расширенная числовая прямая: $\overline{\R} = \R \cup \{-\infty, +\infty, \infty\}$.\\
+    Некоторые арифметические операции:
+    \begin{enumerate}
+        \item $a + (+\infty) = +\infty$
+        \item $a + (-\infty) = -\infty$
+        \item $+\infty + (+\infty) = +\infty$
+        \item $-\infty + (-\infty) = -\infty$
+        \item $a * (+\infty) = +\infty$
+        \item $a * (-\infty) = -\infty$
+        \item $(+\infty)*(+\infty) = +\infty$
+        \item $(-\infty)*(-\infty) = +\infty$
+        \item $(+\infty)*(-\infty) = -\infty$
+    \end{enumerate}
+
+    Бесконечный предел:
+    $$\linf x_n = +\infty \Leftrightarrow \forall M > 0 \sp \exists N: \forall n \geq N \sp x_n > M$$
+    $$\linf x_n = -\infty \Leftrightarrow \forall M < 0 \sp \exists N: \forall n \geq N \sp x_n < M$$
+    $$\linf x_n = \infty \Leftrightarrow \forall M > 0 \sp \exists N: \forall n \geq N \sp |x_n| > M$$
+
+    Расширенная теорема о монотонной последовательности: любая монотонная последовательность имеет предел (конечный или бесконечный).
+
+    \section{Предел функции. Определение предела по Коши и по Гейне. Их эквивалентность.}
+
+
+
+
+\end{document}
