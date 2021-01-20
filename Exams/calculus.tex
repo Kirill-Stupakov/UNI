@@ -1,0 +1,326 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath, amsmath, amssymb, amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[makeroom]{cancel}
+\usepackage{hyperref}
+
+\def\X{\mathbb{X}}
+\def\R{\mathbb{R}}
+\def\Q{\mathbb{Q}}
+\def\Z{\mathbb{Z}}
+\def\N{\mathbb{N}}
+
+\def\sp{\, \, \,}
+
+\def\linf{\lim \limits_{n \to \infty}}
+\def\lima{\lim \limits_{x \to a}}
+
+
+\begin{document}
+    \tableofcontents \pagebreak
+    \noindent
+
+
+    \section{Аксиоматика вещественных чисел}
+    $\forall x,y \in \R$ существуют две бинарные операции:
+    $$+: \R \times \R \to \R$$
+    $$*: \R \times \R \to \R$$
+
+    Аксиомы $\R$:
+    \begin{enumerate}
+        \item $\exists 0 \in \R : \forall x \in \R \sp x + 0 = 0 + x = x$
+        \item $\forall x \in \R \sp \exists (-x) \in \R: x + (-x) = (-x) + x = 0$
+        \item $\forall x,y,z \in \R \sp x+(y+z)=(x+y)+z$
+        \item $\forall x,y \in \R \sp x+y = y+x$
+        \item $\exists 1 \in \R \setminus \{0\}: \forall x \in \R \sp x*1 = 1*x = x$
+        \item $\forall x \in \R \setminus \{0\} \sp \exists x^{-1}: x*x^{-1} = x^{-1}*x = 1$
+        \item $\forall x,y,z \in \R \sp x*(y*z)=(x*y)*z$
+        \item $\forall x,y \in \R \sp x*y = y*x$
+        \item $\forall x,y,z \in \R \sp (x+y)*z=xz + yz$
+        \item $x \leq x$
+        \item $x \leq y \land y \leq x \Rightarrow x = y$
+        \item $x \leq y \lor y \leq x$
+        \item $x \leq y \Rightarrow x+z \leq y+z$
+        \item $x \geq 0 \land y \geq 0 \Rightarrow xy \geq 0$
+        \item Если $X \subset \R$ и $Y \subset \R$ таковы, что $\forall x \in X \sp \forall y \in Y \sp x \leq y$, то $\exists c \in \R: \forall x \in X \sp \forall y \in Y \sp x \leq c \leq y$
+    \end{enumerate}
+
+    \section{Индуктивные множества. Натуральные числа. Метод математической индукции}
+    Множество $X \subset \R$ называют \textbf{индуктивным}, если $1 \in X$ и $\forall x \in X \Rightarrow x+1 \in X$\\
+    Множество натуральных чисел: $\displaystyle \N = \bigcap_{X \subset \R} X$, где $X$ - индуктивное множество.
+    
+    $\mathcal{P}(n)$ - некоторое утверждение, является верным или неверным в зависимости от $n$.\\
+    Принцип математической индукции: если $\mathcal{P}(1)$ - верно, и $\mathcal{P}(n) \Rightarrow \mathcal{P}(n+1)$, тогда $\mathcal{P}(n)$ - верно $\forall n \in \N$.
+
+    \section{Неравенство Бернулли. Принцип Архимеда}
+    Неравенство Бернулли: $(1+x)^n \geq 1+nx \sp \forall x > -1 \sp \forall n \in \N$. Причём равенство достигается только при $n = 1$ или $x = 0$.\\
+    Бином Ньютона: $\displaystyle (a+b)^n = \sum_{i=0}^n C_n^i a^i b^{n-i}$.
+
+    \section{Максимум и минимум. Супремум и инфимум}
+    $\max X = a \Leftrightarrow a \in X \land \forall x \in X \sp x \leq a$\\
+    $\min X = a \Leftrightarrow a \in X \land \forall x \in X \sp x \geq a$\\
+    Если $\max$ и $\min$ существуют, то они единственные.
+
+    $\sup X = \min \{c \in \R: \forall x \in X \sp x \leq c\} = a \Leftrightarrow (\forall x \in X \sp x \leq a) \land (\forall r < a \sp \exists x' \in X: r < x')$\\
+    Любое непустое ограниченное сверху множество $X \subset \R$ имеет $\sup$\\
+    $\inf X = \max \{c \in \R: \forall x \in X \sp x \geq c\} = a \Leftrightarrow (\forall x \in X \sp x \geq a) \land (\forall r > a \sp \exists x' \in X: r > x')$\\
+
+    Каждое ограниченное подмножество $E \subset \N$ имеет максимум. Множество $\N$ неограниченно сверху.
+
+    \section{Теорема о целой части. Принцип Архимеда.}
+    Теорема о целой части: $\forall x \in \R \sp \exists ! k \in \Z: k \leq x \leq k+1$.\\
+    Принцип Архимеда: $\forall \varepsilon > 0 , A > 0 \sp \exists n \in \N : n\varepsilon > A$.
+
+    \section{Плотность $\Q$ в $\R$ и $\R \setminus \Q$ в $\R$}
+    Плотность $\Q$ в $\R$: $\forall (a,b) \subset \R \sp \exists r \in \Q: a < r < b$.\\
+    Плотность $\R \setminus \Q$ в $\R$: $\forall (a,b) \subset \R \sp \exists t \in \R \setminus \Q : a < t < b$.
+
+    \section{Лемма Кантора о вложенных отрезках. Лемма о стягивающихся отрезках}
+    Лемма Кантора о вложенных отрезках: Каждая система вложенных отрезков имеет непустое перемечение. $ [a_1, b_1] \supset [a_2, b_2] \supset \cdots \supset \cdots \Rightarrow \bigcap_{n \in \N} [a_n, b_n] \neq \emptyset$. Для вложенных интервалов она не работает!\\
+    Лемма о стягивающихся отрезках: если в условиях леммы о вложенных отрезках\\$\forall \varepsilon > 0 \sp \exists n \in \N : b_n - a_n < \varepsilon$, то в пересечении $\bigcap_{n \in \N} [a_n,b_n]$ лежит ровно одна точка.
+
+    \section{Лемма Гейне-Бореля}
+    Говорят, что система множеств $\{G_{\alpha}\}_{\alpha \in A}$ покрывает множество $X \in \R$, если $X \subset \bigcup_{\alpha \in A} G_{\alpha}$.\\
+    Лемма Гейне-Бореля: из любого покрытия отрезка открытыми интервалами можно выделить конечное подпокрытие. Если $\{I_{\alpha}\}_{\alpha \in A}$, где $I_\alpha = (a_{\alpha}, b_{\alpha})$ покрывает $[c, d]$, то $\exists \alpha_1, \alpha_2, \cdots, \alpha_n \in A: [c,d] \subset \bigcup_{j=1}^N I_{\alpha_j}$.
+
+    \section{Точка сгущения. Лемма Больцано--Вейерштрасса.}
+    Интервал $V_{\delta} (x) = (x-\delta , x+\delta )$ называется $\delta$-окрестностью точки $x$.\\
+    $\dot{V}_{\delta} (x) = V_{\delta} (x) \setminus \{x\}$ называют проколотой окрестностью.\\
+    Точка $a \in \R$ называется точкой сгущения множества $X \subset \R$, если любая её проколотая окрестность содержит точку из множества $X$.\\
+    Лемма Больцано--Вейерштрасса: каждое бесконечное ограниченное множество $X \in \R$ имеет точку сгущения $a \in \R$.
+
+    \section{Равномощные множества. Счётные множества. Их свойства.}
+    Множество $X$ называется конечным, если существует биекция между $X$ и множеством $1, 2, \cdots , n$. При этом $n$ - количество элементов $X$. $n:= \# X$.\\
+    Множества $X$ и $Y$ называются равномощными, если между ними можно установить биекцию.\\
+    Множество $X$ называется счётным, если оно равномощно множеству $\N$.\\
+    Каждое бесконечное подмножество $\N_1 \subset \N$ счётно.
+    Свойства счётных множеств:
+    \begin{enumerate}
+        \item Если $X$ и $Y$ - счётные множества, то и $X \times Y$ - тоже счётное.
+        \item Пусть $X_{m_1}, X_{m_2}, \cdots, X_{m_n}, \cdots$ - счётное семейство свётных множеств. Тогда $\X = \bigcup_{m \in \N} X_m$ - счётно.
+    \end{enumerate}
+
+    \section{Теорема Кантора о несчётности множества точек отрезка}
+    $X=[0,1]$ не является счётным.\\
+    Говорят, что множество $X$ имеет мощность континуум, если $X$ равномощно $[0,1]$.
+
+    \section{Предел последовательности. Единственность предела. Ограниченность сходящейся последовательности.}
+    Говорят, что последовательность $\{a_n\}_{n=1}^{\infty}$ сходится к числу $A \in \R$ ($\linf a_n = A$), если $\forall \varepsilon > 0 \sp \exists N \in \N: \forall n \geq N \sp |a_n - A| < \varepsilon$.\\
+    Если последовательность имет предел, то говорят, что она сходится. Иначе, расходится.\\
+    Теорема: если предел существует, то он единственный.\\
+    Теорема: сходящаяся последовательность ограничена.\\
+
+    \section{Арифметические действия над сходящимися последовательностями}
+    Пусть $\linf x_n = a$; $\linf y_n = b$. Тогда:
+    \begin{enumerate}
+        \item $\linf (x_n \pm y_n) = a \pm b$
+        \item $\linf (x_n * y_n) = ab$
+        \item если $b \neq 0$, то $\linf \frac{x_n}{y_n} = \frac{a}{b}$.
+    \end{enumerate}
+
+    \section{Теорема о сжатой последовательности}
+    Теорема ''о двух милиционерах'': если $x_n \leq c_n \leq y_n \sp \forall n \in \N$ и $\linf x_n = a$; $\linf y_n = b$, тогда $c_n$ тоже сходится, причём $\linf c_n = a$.
+
+    \section{Предельный переход в неравенстве}
+    Если $\linf x_n = a$ и $\linf y_n = b$ и $\exists N: \forall n > N \sp x_n \leq y_n$, то $a \leq b$.
+    
+    \section{Предел монотонной последовательности}
+    $\{x_n\}_{n=1}^{\infty}$ - называется неубывающей, если $\forall n \sp x_n \leq x_{n+1}$\\
+    Теорема о монотонной последовательности: любая неубывающай ограниченная сверху последовательность имеет придел, причём $\linf x_n = \sup \{x_n: x \in \N\}$
+
+    \section{Определение числа $e$}
+    \[e = \linf \left(1+\frac{1}{n}\right)^n = \linf \left(1+\frac{1}{n}\right)^{n+1}\]
+
+    \section{Верхние и нижние пределы. Характеристика верхнего предела}
+    Пусть $\{x_n\}$ ограничена сверху и снизу.\\
+    Верхняя огибающая: $\overline{x}_n := \sup \limits_{m \geq n} x_m$.\\
+    Нижняя огибающая: $\underline{x}_n := \inf \limits_{m \geq n} x_m$.\\
+    \[\overline{\linf} x_n := \linf \overline{x_n} = \inf \limits_{n \in \N} \sup \limits_{m \geq n} x_m\]
+    \[\underline{\linf} x_n := \linf \underline{x_n} = \sup \limits_{n \in \N} \inf \limits_{m \geq n} x_m\]
+
+    Характеристика верхнего предела:
+    $$\overline{\linf} x_n = A \Leftrightarrow
+    \begin{cases}
+        \forall \varepsilon > 0 \sp \exists N: \forall n \geq N \sp x_n < A + \varepsilon \\
+        \forall \varepsilon > 0 \sp \forall N: \exists n > N: x_n > A - \varepsilon
+    \end{cases}$$
+
+    \section{Фундаментальность последовательности. Критерий Коши сходимости последовательности.}
+    Последовательность $\{x_n\}$ называется фундаментальной (или сходящейся в себе, или последовательностью Коши), если
+    $$\forall \varepsilon > 0 \sp \exists N: \forall m,n \geq N \sp |x_n - x_m| < \epsilon$$
+    Теорема Коши: последовательность $\{x_n\}, x_n \in \R$ сходится тогда и только тогда, когда она является фундаментальной.
+
+    \section{Подпоследовательность. Частичный предел. Теорема о верхнем и нижнем пределе последовательности}
+    Пусть $\{x_n\}_{n=1}^{\infty}$, $x_n \in \R$. Пусть $\{n_k\}_{k=1}^{\infty}: n_k \in \N , \forall k \sp n_k < n_k+1$.\\
+    Тогда последовательность $\{n_{n_k}\}_{k=1}^{\infty}$ называется подпоследовательностью последовательности $\{x_n\}$.\\
+    
+    Лемма: если $\linf x_n = A$, то любая подпоследовательность $\{x_{n_k}\}$ сходится к $A$: $\linf x_{n_k} = A$\\
+    
+    Число $a \in \R$ называется частичным пределом $\{x_n\}$, если существует подпоследовательность $\{x_{n_k}\}: \linf x_{n_k} = a$.
+    
+    Теорема о верхнем и нижнем пределе последовательности: $\{x_n\}: x_n \in \R$. Тогда:
+    \begin{enumerate}
+        \item $\overline{\linf} x_n$ равен наибольшему из всех частичных пределов.
+        \item последовательность $x_n$ сходится $\Leftrightarrow \overline{\linf} x_n = \underline{\linf} x_n = \linf x_n$
+    \end{enumerate}
+
+    \section{Предел последовательности в широком смысле. Расширенный вариант теоремы о монотонной последовательности.}
+    Расширенная числовая прямая: $\overline{\R} = \R \cup \{-\infty, +\infty, \infty\}$.\\
+    Некоторые арифметические операции:
+    \begin{enumerate}
+        \item $a + (+\infty) = +\infty$
+        \item $a + (-\infty) = -\infty$
+        \item $+\infty + (+\infty) = +\infty$
+        \item $-\infty + (-\infty) = -\infty$
+        \item $a * (+\infty) = +\infty$
+        \item $a * (-\infty) = -\infty$
+        \item $(+\infty)*(+\infty) = +\infty$
+        \item $(-\infty)*(-\infty) = +\infty$
+        \item $(+\infty)*(-\infty) = -\infty$
+    \end{enumerate}
+
+    Бесконечный предел:
+    $$\linf x_n = +\infty \Leftrightarrow \forall M > 0 \sp \exists N: \forall n \geq N \sp x_n > M$$
+    $$\linf x_n = -\infty \Leftrightarrow \forall M < 0 \sp \exists N: \forall n \geq N \sp x_n < M$$
+    $$\linf x_n = \infty \Leftrightarrow \forall M > 0 \sp \exists N: \forall n \geq N \sp |x_n| > M$$
+
+    Расширенная теорема о монотонной последовательности: любая монотонная последовательность имеет предел (конечный или бесконечный).
+
+    \section{Предел функции. Определение предела по Коши и по Гейне. Их эквивалентность.}
+    $E \in \R$\\
+    $f: E \to \R$; $a \in \R$ - точка сгущения $E$. Предел по Коши:
+    $$\lima f(x) = L \Leftrightarrow \forall \varepsilon > 0 \sp \exists \delta > 0 : \forall x \in \dot{\mathbf{V}}_{\delta}(a) \cap E \sp |f(x) - L| < \varepsilon$$
+    Эквивалентная переформулировка через окрестности:
+    $$\lima f(x) = L \Leftrightarrow \forall \mathbf{V}_{\varepsilon}(L) \sp \exists \dot{\mathbf{V}}_{\delta}(a) : x \in \dot{\mathbf{V}}_{\delta}(a) \Rightarrow f(x) \in \mathbf{V}_{\varepsilon}(L)$$
+    Определение предела по Гейне:
+    $$\lima f(x) = L \Leftrightarrow \forall \{x_n\}_{n = 1}^{\infty}: x_n \in E \setminus \{a\} \sp x_n \to A \Rightarrow f(x_n) \to L$$
+    Теорема: определения по Коши и Гейне равносильны.
+    
+    \section{Критерий Коши для предела функций}
+    $$\exists \lima f(X) \in \R \Leftrightarrow \forall \varepsilon > 0 \sp \exists \delta > 0: \forall x_1, x_2 \in \dot{\mathbf{V}}_{\delta}(a) \Rightarrow |f(x_1) - f(x_2)| < \varepsilon$$
+
+    \section{Предел функции и арифметические операции. Предельный переход в неравенстве}
+    $f,g : E \to \R$; $a$ - точка сгущения $E$.\\
+    Пусть $\lima f(x) = A$; $\lima g(x) = B$. Тогда:
+    $$\lima (f \pm g)(x) = A+B$$
+    $$\lima (fg)(x) = AB$$
+    $$\forall x \in E \sp B \neq 0, g(x) \neq 0 \Rightarrow \lima \left(\frac{f}{g}\right)(x) = \frac{A}{B}$$
+
+    \section{Первый замечательный предел}
+    $$\lim_{x \to 0} \frac{\sin x}{x} = 1$$
+
+    \section{Односторонние пределы. Предел монотонной функции}
+    $$\lim_{x \to a^+} f(x)= \lim_{x \to a^{+ 0}} f(x) = L \Leftrightarrow \forall \varepsilon > 0 \sp \exists \delta > 0 : \forall x \in E : 0 < x-a < \delta \sp |f(x) - L| < \varepsilon$$
+    $$\lima f(x) = L \Leftrightarrow \lim_{x \to a^+} f(x) = \lim_{x \to a^-} f(x) = L$$
+
+    Теорема о пределе монотонной функции: если $f : (a,b) \to \R$ не убывает, тогда:
+    $$\lim_{x \to a^+} f(x) = \inf \limits_{(a,b)} f$$
+    $$\lim_{x \to b^-} f(x) = \sup \limits_{(a,b)} f$$
+
+    \section{Существование и единственность корня степени $n$}
+    Пусть $n \in \N; a > 0$. Тогда $\exists ! \sp \xi > 0 : \xi ^n = a$
+
+    \section{Арифметические действия и предел. Единственность предела}
+    Уже было
+
+    \section{Определение показательной функции (леммы)}
+    $$\forall \varepsilon > 0 \sp \exists k \in \N : -\varepsilon < a^{-\frac{1}{k}} < a^{\frac{1}{k}} < 1 + \varepsilon$$
+    $$\lim_{\Q \ni t \to r} a^t = a^r , r \in \Q$$
+
+    \section{Логарифм. Степенная функция.}
+    Теорема о существовании $\log$: пусть $a > 1$. $\forall y \in \R^+ \sp \exists t: a^t = y$. $t := \log_a y$\\
+    Определение степенной функции: пусть $\alpha \in \R$. Тогда $x^{\alpha} := e^{\alpha \ln x}$
+
+    \section{Второй замечательный предел}
+    $$\lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = e$$
+    Следствия:
+    $$\lim_{t \to 0} (1+t)^{\frac{1}{t}} = e$$
+    $$\lim_{t \to 0} \frac{\log (1+t)}{t} = \lim_{t \to 0} \lg (1+t)^{\frac{1}{t}} = 1$$
+    $$\lim_{s \to 0} \frac{e^s - 1}{s} = \lim_{\alpha \to 0} \frac{\alpha}{\ln (1 + \alpha)} = 1$$
+
+    \section{Символы Ландау: O-большое, o-малое, эквивалентность. Их свойства}
+    $$f(x) = o(g(x)) \Leftrightarrow \exists \alpha : f(x) = \alpha (x) g(x), \alpha \text{ - бесконечно малая при } x \to a$$
+    $$f(x) = O(g(x)) \Leftrightarrow \exists U_a, \exists \varphi \text{ - огранич. на } \dot{U}_a : f(x) = \alpha (x) g(x)$$
+    $$f \sim g \sp (x \to a) \Leftrightarrow \exists \psi : f(x) = \psi (x) g(x), \psi (x) \to 1$$
+
+    $$f \sim g \Leftrightarrow f(x) = g(x) + o(g(x))$$
+    $$\alpha = o(\beta) \Rightarrow \alpha = O(\beta)$$
+    $$o(\alpha) \pm o(\alpha) = o(\alpha)$$
+    $$const * o(\beta) = o(\beta)$$
+    $$o(\alpha)o(\beta) = o(\alpha \beta)$$
+    
+
+    \section{Эквивалентные бесконечно малые. Замена на эквивалентное при вычислении пределов}
+    $\alpha \to 0$. Тогда:
+    $$\sin \alpha \sim \alpha$$
+    $$\ln (1 + \alpha) \sim \alpha$$
+    $$e^{\alpha} - 1 \sim \alpha$$
+    $$(1 + \alpha)^a - 1 \sim \alpha a$$
+    $$\tan \alpha \sim \alpha$$
+    $$1 - \cos \alpha \sim \frac{\alpha ^2}{2}$$
+    $$\arcsin \alpha \sim \alpha$$
+    $$\arctan \alpha \sim \alpha$$
+
+    Теорема о замене на эквивалентное при вычислении пределов:\\
+    Пусть $\alpha , \beta : E \to \R$, и $a$ - предельная точка $E$;\\
+    $\alpha \sim \tilde{\alpha}, \beta \sim \tilde{\beta}$ при $x \to a$\\
+    Тогда:
+    $$\lim_{x \to a} \alpha (x) \beta (x) = \lim_{x \to a} \tilde{\alpha} (x) \tilde{\beta} (x)$$
+    $$\lim_{x \to a} \frac{\alpha (x)}{\beta (x)} = \lim_{x \to a} \frac{\tilde{\alpha} (x)}{\tilde{\beta} (x)}$$
+
+    \section{Непрерывность. точки разрыва (их классификация). Примеры}
+    Определение непрерывности:
+    $$f \text{ непрерывна в точке } x_0 \Leftrightarrow \lim_{x \to x_0} f(x) = f(x_0)$$
+    Классификация точек разрыва:
+    \begin{enumerate}
+        \item Разрывы I рода
+        \begin{enumerate}
+            \item $\exists$ конечный придел $\lima f(x) \neq f(a)$ (или $f(a)$ не существует). Это называется устранимым разрывом\\
+            Устранение разрыва - переопределение или доопределение функции до непрерывной.
+            $$\tilde{f}(x) := \begin{cases}
+                f(x), \forall x \neq a \\
+                \lima f(x), x = a
+            \end{cases}$$
+            \begin{itemize}
+                \item $f(x) = \text{sign}^2 (x)$
+                \item $f(x) = \frac{x^2}{x}$
+            \end{itemize}
+            \item $\exists$ конечные односторонние пределы, но они не совпадают.
+            \begin{itemize}
+                \item $f(x) = \lfloor x \rfloor$
+                \item $f(x) = \{x\}$
+            \end{itemize}
+        \end{enumerate}
+        \item Все остальные
+        \begin{enumerate}
+            \item бесконечные пределы
+            \begin{itemize}
+                \item $f(x) = \frac{1}{x}$
+                \item $f(x) = \tan x$
+            \end{itemize}
+            \item нет предела в т. $a$
+            \begin{itemize}
+                \item $f(x) = \sin \frac{1}{x}$
+                \item $f(x) = (-1)^{\lfloor \frac{1}{x} \rfloor}$
+            \end{itemize}
+        \end{enumerate}
+        \begin{itemize}
+            \item Функция Дерехле
+            $$\mathbf{D}(x) = \begin{cases}
+                0, x \not\in \Q \\
+                1, x \in \Q
+            \end{cases}$$
+            \item Функция Римана
+            $$\mathbf{R}(x) = \begin{cases}
+                0, x \not\in \Q \\
+                \frac{1}{q}, x = \frac{p}{q} \in \Q
+            \end{cases}$$
+        \end{itemize}
+    \end{enumerate}
+
+    \section{Локальные свойства непрерывных функций}
+    
+\end{document}
