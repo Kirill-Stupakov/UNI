@@ -1,0 +1,107 @@
+algorithm - a procedure for solving a mathematical problem - алгоритм
+analysis - a detailed examination of anything complex in order to understand its nature - анализ
+application
+approach
+arbitrary - existing or coming about seemingly at random or by chance - произвольный
+array - a data structure in which similar elements of data are arranged in a table - массив
+ascending
+asymptote - a straight line associated with a curve such that as a point moves along an infinite branch of the curve the distance from the point to the line approaches zero and the slope of the curve at the point approaches the slope of the line - ассимптота
+average - a single value (such as a mean, mode, or median) that summarizes or represents the general significance of a set of unequal values - среднее
+binary
+bisection - a division into two usualy equal parts - бисекция
+buffer - a section of computer memory for temporarily storing information - буффер
+byte - a unit of data-storage capacity - байт
+combinatorial
+comparison
+compilation - a process of running something (such as a program) through a computer - компиляция
+complexity
+converge
+convex hull - a polygon each of whose angles is less than a straight angle - выпуклый многоугольник
+criteria
+cycle
+data
+dataset
+define
+denominator - the part of a fraction that is below the line and that functions as the divisor - знаменатель
+descending
+deterministic algorithm - an angorithm which, given a particular input, will always produce the same output - детерминированный алгоритм
+dimension
+disjoint sets - sets, that have no elements in common - непересекающиеся множества
+distribution
+efficient
+equation
+estimate
+evaluate
+execution
+explicitly
+extract
+frequency
+function
+graph
+hash collision - a situation that occurs when two distinct pieces of data have the same hash value, checksum, fingerprint, etc - совпадение
+hash function - any function that can be used to map data of arbitrary size to fixed-size values - хэш функция
+heuristic
+hierarchy
+identity
+implementation - a realization of an application, or execution of a plan, idea, etc - реализация
+implicitly
+incrementally - in regular increases, additions, or stages - пошагово
+index
+instance
+invoke
+iteration
+key
+library function
+linear-time
+loop
+mainframe - a large, powerful computer that can handle many tasks concurrently and is usually used commercially - мейнфрейм
+median
+memory
+merge
+node
+numerator
+ocurrence
+operator
+paradigm
+partition
+per-capita income
+performance
+permutation
+pointer
+polygon - a closed plane figure bounded by straight lines - многоугольник
+pragmatics
+preprocessing
+probability
+procedure
+programming
+property
+quadratic
+real number
+recursion
+restriction
+root
+runtime
+sample
+seek time
+series
+set
+solve
+sophisticated
+sorting
+sparse
+structure
+substantial
+swap
+sweep
+theorem
+trace
+transition
+traverse
+tree
+uniform
+verices
+
+Key tactics of designing and implementing various algorithms for storing and searching for data are described.
+For some of them a C++ implementation is presented.
+Discrete mathematics and calculus are involved to prove the efficiency of given approaches.
+Example cases from the author's career are given for clarification.
