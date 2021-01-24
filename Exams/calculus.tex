@@ -1,10 +1,9 @@
-\documentclass[11pt, a4paper]{article}
+\documentclass[11pt, a4paper, utf-8]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
 \usepackage{amsmath, amsmath, amssymb, amsthm}
 \usepackage[margin=1in]{geometry}
-\usepackage[makeroom]{cancel}
 \usepackage{hyperref}
 
 \def\X{\mathbb{X}}
@@ -20,10 +19,13 @@
 \def\ds{\displaystyle}
 
 
-\begin{document}
-    \tableofcontents \pagebreak
-    \noindent
+\title{Математический анализ, I курс}
+\author{Кирилл Ступаков}
+\date{Осень 2020}
 
+\begin{document}
+    \maketitle \pagebreak
+    \tableofcontents \pagebreak
 
     \section{Аксиоматика вещественных чисел}
     $\forall x,y \in \R$ существуют две бинарные операции:
@@ -58,7 +60,7 @@
     $\mathcal{P}(n)$ - некоторое утверждение, является верным или неверным в зависимости от $n$.\\
     Принцип математической индукции: если $\mathcal{P}(1)$ - верно, и $\mathcal{P}(n) \implies \mathcal{P}(n+1)$, тогда $\mathcal{P}(n)$ - верно $\forall n \in \N$.
 
-    \section{Неравенство Бернулли. Принцип Архимеда}
+    \section{Метод мат. индукции. Неравенство Бернулли. Бином Ньютона}
     Неравенство Бернулли: $(1+x)^n \geq 1+nx \sp \forall x > -1 \sp \forall n \in \N$. Причём равенство достигается только при $n = 1$ или $x = 0$.\\
     Бином Ньютона: $\displaystyle (a+b)^n = \sum_{i=0}^n C_n^i a^i b^{n-i}$.
 
@@ -74,7 +76,7 @@
     Каждое ограниченное подмножество $E \subset \N$ имеет максимум. Множество $\N$ неограниченно сверху.
 
     \section{Теорема о целой части. Принцип Архимеда.}
-    Теорема о целой части: $\forall x \in \R \sp \exists ! k \in \Z: k \leq x \leq k+1$.\\
+    Теорема о целой части: $\forall x \in \R \sp \exists ! k \in \Z: k \leq x < k+1$.\\
     Принцип Архимеда: $\forall \varepsilon > 0 , A > 0 \sp \exists n \in \N : n\varepsilon > A$.
 
     \section{Плотность $\Q$ в $\R$ и $\R \setminus \Q$ в $\R$}
@@ -314,7 +316,7 @@
             \end{itemize}
         \end{enumerate}
         \begin{itemize}
-            \item Функция Дерехле
+            \item Функция Дирихле
             $$\mathbf{D}(x) = \begin{cases}
                 0, x \not\in \Q \\
                 1, x \in \Q
@@ -344,7 +346,7 @@
     $$C(E) := \{f: E \to \R , f \text{ - непр. на } E\}$$
     $$f \in C (E) \iff \forall x_0 \in E \lim_{x \to x_0} f(x) = f(x_0)$$
     Теорема Больцано-Коши: Пусть $f \in C[a,b]$ и $f(a)f(b) < 0$. Тогда $\exists c \in (a,b): f(c) = 0$.\\
-    Теорема о промежуточном значении непрерывной функции: Пусть $f \in C[a,b]; f(a) = A; f(b) = B \neq A$. Тогда $\forall C$, лежащего между $A$ и $B$ $\exists c \in (a,b): f(c) = C$.
+    Теорема о промежуточном значении непрерывной функции: Пусть $f \in C[a,b]; f(a) = A; f(b) = B \neq A$. Тогда $\forall C$, лежащего между $A$ и $B$ $\exists c \in (a,b): f(c) = C$.\\
     Теорема: непрерывный образ промежутка - промежуток.\\
     $f \in C <a,b> \implies f(<a, b>) = <m, M>$.
 
@@ -365,7 +367,7 @@
     $$\omega _f (E, \delta) := \sup \{|f(x) - f(y)|: x, y \in E, |x-y| < \delta\}$$
 
     \section{Теорема о монотонности обратимой непрерывной функции}
-    Пусть $f: X \to Y$ - бикуцияж $f$ - строго монотонна.\\
+    Пусть $f: X \to Y$ - биекция $f$ - строго монотонна.\\
     Тогда $\exists f^{-1} : Y \to X$, $f^{-1}$ строго монотонна, причём знак монотонности сохраняется.
 
     \section{Критерий непрерывности монотонной функции}
@@ -406,7 +408,7 @@
     $$Q(x) := \prod_{k = 0}^n (x-x_k)$$
     $$P(x) := \sum_{i = 0}^{n} \frac{Q(x)}{(x-x_i)Q'(x_i)}y_i = \sum_{i = 0}^n \left(y_i \prod_{j = 1 j \neq i}^n \frac{x-x_j}{x_i-x_j}\right)$$
     $$P(x) = \begin{cases}
-        \sum_{i = 0}^{n} \frac{Q(x)}{(x-x_i)Q'(x_i)}y_i, \sp x \neq x_i \\
+        \sum \limits_{i = 0}^{n} \dfrac{Q(x)}{(x-x_i)Q'(x_i)}y_i, \sp x \neq x_i \\
         y_i, \sp x = x_i
     \end{cases}$$
 
