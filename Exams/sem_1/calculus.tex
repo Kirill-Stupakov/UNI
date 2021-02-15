@@ -1,0 +1,532 @@
+\documentclass[11pt, a4paper, utf-8]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath, amsmath, amssymb, amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+\def\X{\mathbb{X}}
+\def\R{\mathbb{R}}
+\def\Q{\mathbb{Q}}
+\def\Z{\mathbb{Z}}
+\def\N{\mathbb{N}}
+
+\def\e{\varepsolon}
+\def\d{\delta}
+
+
+\def\sp{\, \, \,}
+
+\def\linf{\lim \limits_{n \to \infty}}
+\def\lima{\lim \limits_{x \to a}}
+\def\ds{\displaystyle}
+
+
+\title{Математический анализ, I курс}
+\author{Кирилл Ступаков}
+\date{Осень 2020}
+
+\begin{document}
+    \maketitle \pagebreak
+    \tableofcontents \pagebreak
+
+    $$1 = |\langle \text{virgin} | \text{me} \rangle |^2$$
+    $$\sin x = x$$
+    $$\pi = e = 3$$
+    $$\mathbb{QED} \qed$$
+
+    \section{Аксиоматика вещественных чисел}
+    $\forall x,y \in \R$ существуют две бинарные операции:
+    \begin{enumerate}
+        \item $+: \R \times \R \to \R$
+        \item $*: \R \times \R \to \R$
+    \end{enumerate}
+
+    Аксиомы $\R$:
+    \begin{enumerate}
+        \item $\exists 0 \in \R : \forall x \in \R \sp x + 0 = 0 + x = x$
+        \item $\forall x \in \R \sp \exists (-x) \in \R: x + (-x) = (-x) + x = 0$
+        \item $\forall x,y,z \in \R \sp x+(y+z)=(x+y)+z$
+        \item $\forall x,y \in \R \sp x+y = y+x$
+        \item $\exists 1 \in \R \setminus \{0\}: \forall x \in \R \sp x*1 = 1*x = x$
+        \item $\forall x \in \R \setminus \{0\} \sp \exists x^{-1}: x*x^{-1} = x^{-1}*x = 1$
+        \item $\forall x,y,z \in \R \sp x*(y*z)=(x*y)*z$
+        \item $\forall x,y \in \R \sp x*y = y*x$
+        \item $\forall x,y,z \in \R \sp (x+y)*z=xz + yz$
+        \item $x \leq x$
+        \item $x \leq y \land y \leq x \implies x = y$
+        \item $x \leq y \lor y \leq x$
+        \item $x \leq y \implies x+z \leq y+z$
+        \item $x \geq 0 \land y \geq 0 \implies xy \geq 0$
+        \item $X, Y \subset \R: \forall x \in X \sp \forall y \in Y \sp x \leq y \implies \exists c \in \R: \forall x \in X \sp \forall y \in Y \sp x \leq c \leq y$
+    \end{enumerate}
+
+    \section{Индуктивные множества. Натуральные числа. Метод математической индукции}
+    Множество $X \subset \R$ называют \textbf{индуктивным}, если $1 \in X$ и $\forall x \in X \implies x+1 \in X$\\
+    Множество натуральных чисел: $\displaystyle \N = \bigcap_{X \subset \R} X$, где $X$ - индуктивное множество.
+    
+    $\mathcal{P}(n)$ - некоторое утверждение, является верным или неверным в зависимости от $n$.\\
+    Принцип математической индукции: если $\mathcal{P}(1)$ - верно, и $\mathcal{P}(n) \implies \mathcal{P}(n+1)$, тогда $\mathcal{P}(n)$ - верно $\forall n \in \N$.
+
+    \section{Метод мат. индукции. Неравенство Бернулли. Бином Ньютона}
+    Неравенство Бернулли: $(1+x)^n \geq 1+nx \sp \forall x > -1 \sp \forall n \in \N$. Причём равенство достигается только при $n = 1$ или $x = 0$.\\
+    Бином Ньютона: $\displaystyle (a+b)^n = \sum_{i=0}^n C_n^i a^i b^{n-i}$.
+
+    \section{Максимум и минимум. Супремум и инфимум}
+    $\max X = a \iff a \in X \land \forall x \in X \sp x \leq a$\\
+    $\min X = a \iff a \in X \land \forall x \in X \sp x \geq a$\\
+    Если $\max$ и $\min$ существуют, то они единственные.
+
+    $\sup X = \min \{c \in \R: \forall x \in X \sp x \leq c\} = a \iff (\forall x \in X \sp x \leq a) \land (\forall r < a \sp \exists x' \in X: r < x')$\\
+    Любое непустое ограниченное сверху множество $X \subset \R$ имеет $\sup$\\
+    $\inf X = \max \{c \in \R: \forall x \in X \sp x \geq c\} = a \iff (\forall x \in X \sp x \geq a) \land (\forall r > a \sp \exists x' \in X: r > x')$\\
+
+    Каждое ограниченное подмножество $E \subset \N$ имеет максимум. Множество $\N$ неограниченно сверху.
+
+    \section{Теорема о целой части. Принцип Архимеда.}
+    Теорема о целой части: $\forall x \in \R \sp \exists ! k \in \Z: k \leq x < k+1$.\\
+    Принцип Архимеда: $\forall \varepsilon > 0 , A > 0 \sp \exists n \in \N : n\varepsilon > A$.
+
+    \section{Плотность $\Q$ в $\R$ и $\R \setminus \Q$ в $\R$}
+    Плотность $\Q$ в $\R$: $\forall (a,b) \subset \R \sp \exists r \in \Q: a < r < b$.\\
+    Плотность $\R \setminus \Q$ в $\R$: $\forall (a,b) \subset \R \sp \exists t \in \R \setminus \Q : a < t < b$.
+
+    \section{Лемма Кантора о вложенных отрезках. Лемма о стягивающихся отрезках}
+    Лемма Кантора о вложенных отрезках: Каждая система вложенных отрезков имеет непустое перемечение.
+    $$ [a_1, b_1] \supset [a_2, b_2] \supset \ldots \supset \ldots \implies \bigcap_{n \in \N} [a_n, b_n] \neq \emptyset$$
+    Для вложенных интервалов она не работает!\\
+    Лемма о стягивающихся отрезках: если в условиях леммы о вложенных отрезках\\$\forall \varepsilon > 0 \sp \exists n \in \N : b_n - a_n < \varepsilon$, то в пересечении $\ds \bigcap_{n \in \N} [a_n,b_n]$ лежит ровно одна точка.
+
+    \section{Лемма Гейне-Бореля}
+    Говорят, что система множеств $\{G_{\alpha}\}_{\alpha \in A}$ покрывает множество $X \in \R$, если $\ds X \subset \bigcup_{\alpha \in A} G_{\alpha}$.\\
+    Лемма Гейне-Бореля: из любого покрытия отрезка открытыми интервалами можно выделить конечное подпокрытие. Если $\{I_{\alpha}\}_{\alpha \in A}$, где $I_\alpha = (a_{\alpha}, b_{\alpha})$ покрывает $[c, d]$, то
+    $$\exists \alpha_1, \alpha_2, \ldots, \alpha_n \in A: [c,d] \subset \bigcup_{j=1}^N I_{\alpha_j}$$
+
+    \section{Точка сгущения. Лемма Больцано--Вейерштрасса.}
+    Интервал $V_{\delta} (x) = (x-\delta , x+\delta )$ называется $\delta$-окрестностью точки $x$.\\
+    $\dot{V}_{\delta} (x) = V_{\delta} (x) \setminus \{x\}$ называют проколотой окрестностью.\\
+    Точка $a \in \R$ называется точкой сгущения множества $X \subset \R$, если любая её проколотая окрестность содержит точку из множества $X$.\\
+    Лемма Больцано--Вейерштрасса: каждое бесконечное ограниченное множество $X \in \R$ имеет точку сгущения $a \in \R$.
+
+    \section{Равномощные множества. Счётные множества. Их свойства.}
+    Множество $X$ называется конечным, если существует биекция между $X$ и множеством $1, 2, \cdots , n$. При этом $n$ - количество элементов $X$. $n:= \# X$.\\
+    Множества $X$ и $Y$ называются равномощными, если между ними можно установить биекцию.\\
+    Множество $X$ называется счётным, если оно равномощно множеству $\N$.\\
+    Каждое бесконечное подмножество $\N_1 \subset \N$ счётно.
+    Свойства счётных множеств:
+    \begin{enumerate}
+        \item Если $X$ и $Y$ - счётные множества, то и $X \times Y$ - тоже счётное.
+        \item Пусть $X_{m_1}, X_{m_2}, \ldots, X_{m_n}, \ldots$ - счётное семейство свётных множеств. Тогда $\ds \X = \bigcup_{m \in \N} X_m$ - счётно.
+    \end{enumerate}
+
+    \section{Теорема Кантора о несчётности множества точек отрезка}
+    $X=[0,1]$ не является счётным.\\
+    Говорят, что множество $X$ имеет мощность континуум, если $X$ равномощно $[0,1]$.
+
+    \section{Предел последовательности. Единственность предела. Ограниченность сходящейся последовательности.}
+    Говорят, что последовательность $\{a_n\}_{n=1}^{\infty}$ сходится к числу $A \in \R$ ($\linf a_n = A$), если $\forall \varepsilon > 0 \sp \exists N \in \N: \forall n \geq N \sp |a_n - A| < \varepsilon$.\\
+    Если последовательность имет предел, то говорят, что она сходится. Иначе, расходится.\\
+    Теорема: если предел существует, то он единственный.\\
+    Теорема: сходящаяся последовательность ограничена.\\
+
+    \section{Арифметические действия над сходящимися последовательностями}
+    Пусть $\linf x_n = a$; $\linf y_n = b$. Тогда:
+    \begin{enumerate}
+        \item $\linf (x_n \pm y_n) = a \pm b$
+        \item $\linf (x_n * y_n) = ab$
+        \item если $b \neq 0$, то $\linf \frac{x_n}{y_n} = \frac{a}{b}$.
+    \end{enumerate}
+
+    \section{Теорема о сжатой последовательности}
+    Теорема ''о двух милиционерах'': если $x_n \leq c_n \leq y_n \sp \forall n \in \N$ и $\linf x_n = a$; $\linf y_n = b$, тогда $c_n$ тоже сходится, причём $\linf c_n = a$.
+
+    \section{Предельный переход в неравенстве}
+    Если $\linf x_n = a$ и $\linf y_n = b$ и $\exists N: \forall n > N \sp x_n \leq y_n$, то $a \leq b$.
+    
+    \section{Предел монотонной последовательности}
+    $\{x_n\}_{n=1}^{\infty}$ - называется неубывающей, если $\forall n \sp x_n \leq x_{n+1}$\\
+    Теорема о монотонной последовательности: любая неубывающай ограниченная сверху последовательность имеет придел, причём $\linf x_n = \sup \{x_n: x \in \N\}$
+
+    \section{Определение числа $e$}
+    \[e = \linf \left(1+\frac{1}{n}\right)^n = \linf \left(1+\frac{1}{n}\right)^{n+1}\]
+
+    \section{Верхние и нижние пределы. Характеристика верхнего предела}
+    Пусть $\{x_n\}$ ограничена сверху и снизу.\\
+    Верхняя огибающая: $\overline{x}_n := \sup \limits_{m \geq n} x_m$.\\
+    Нижняя огибающая: $\underline{x}_n := \inf \limits_{m \geq n} x_m$.\\
+    \[\overline{\linf} x_n := \linf \overline{x_n} = \inf \limits_{n \in \N} \sup \limits_{m \geq n} x_m\]
+    \[\underline{\linf} x_n := \linf \underline{x_n} = \sup \limits_{n \in \N} \inf \limits_{m \geq n} x_m\]
+
+    Характеристика верхнего предела:
+    $$\overline{\linf} x_n = A \iff
+    \begin{cases}
+        \forall \varepsilon > 0 \sp \exists N: \forall n \geq N \sp x_n < A + \varepsilon \\
+        \forall \varepsilon > 0 \sp \forall N: \exists n > N: x_n > A - \varepsilon
+    \end{cases}$$
+
+    \section{Фундаментальность последовательности. Критерий Коши сходимости последовательности.}
+    Последовательность $\{x_n\}$ называется фундаментальной (или сходящейся в себе, или последовательностью Коши), если
+    $$\forall \varepsilon > 0 \sp \exists N: \forall m,n \geq N \sp |x_n - x_m| < \epsilon$$
+    Теорема Коши: последовательность $\{x_n\}, x_n \in \R$ сходится тогда и только тогда, когда она является фундаментальной.
+
+    \section{Подпоследовательность. Частичный предел. Теорема о верхнем и нижнем пределе последовательности}
+    Пусть $\{x_n\}_{n=1}^{\infty}$, $x_n \in \R$. Пусть $\{n_k\}_{k=1}^{\infty}: n_k \in \N , \forall k \sp n_k < n_k+1$.\\
+    Тогда последовательность $\{n_{n_k}\}_{k=1}^{\infty}$ называется подпоследовательностью последовательности $\{x_n\}$.\\
+    
+    Лемма: если $\linf x_n = A$, то любая подпоследовательность $\{x_{n_k}\}$ сходится к $A$: $\linf x_{n_k} = A$\\
+    
+    Число $a \in \R$ называется частичным пределом $\{x_n\}$, если существует подпоследовательность $\{x_{n_k}\}: \linf x_{n_k} = a$.
+    
+    Теорема о верхнем и нижнем пределе последовательности: $\{x_n\}: x_n \in \R$. Тогда:
+    \begin{enumerate}
+        \item $\overline{\linf} x_n$ равен наибольшему из всех частичных пределов.
+        \item последовательность $x_n$ сходится $\iff \overline{\linf} x_n = \underline{\linf} x_n = \linf x_n$
+    \end{enumerate}
+
+    \section{Предел последовательности в широком смысле. Расширенный вариант теоремы о монотонной последовательности.}
+    Расширенная числовая прямая: $\overline{\R} = \R \cup \{-\infty, +\infty, \infty\}$.\\
+    Некоторые арифметические операции:
+    \begin{enumerate}
+        \item $a + (+\infty) = +\infty$
+        \item $a + (-\infty) = -\infty$
+        \item $+\infty + (+\infty) = +\infty$
+        \item $-\infty + (-\infty) = -\infty$
+        \item $a * (+\infty) = +\infty$
+        \item $a * (-\infty) = -\infty$
+        \item $(+\infty)*(+\infty) = +\infty$
+        \item $(-\infty)*(-\infty) = +\infty$
+        \item $(+\infty)*(-\infty) = -\infty$
+    \end{enumerate}
+
+    Бесконечный предел:
+    $$\linf x_n = +\infty \iff \forall M > 0 \sp \exists N: \forall n \geq N \sp x_n > M$$
+    $$\linf x_n = -\infty \iff \forall M < 0 \sp \exists N: \forall n \geq N \sp x_n < M$$
+    $$\linf x_n = \infty \iff \forall M > 0 \sp \exists N: \forall n \geq N \sp |x_n| > M$$
+
+    Расширенная теорема о монотонной последовательности: любая монотонная последовательность имеет предел (конечный или бесконечный).
+
+    \section{Предел функции. Определение предела по Коши и по Гейне. Их эквивалентность.}
+    $E \in \R$\\
+    $f: E \to \R$; $a \in \R$ - точка сгущения $E$. Предел по Коши:
+    $$\lima f(x) = L \iff \forall \varepsilon > 0 \sp \exists \delta > 0 : \forall x \in \dot{\mathbf{V}}_{\delta}(a) \cap E \sp |f(x) - L| < \varepsilon$$
+    Эквивалентная переформулировка через окрестности:
+    $$\lima f(x) = L \iff \forall \mathbf{V}_{\varepsilon}(L) \sp \exists \dot{\mathbf{V}}_{\delta}(a) : x \in \dot{\mathbf{V}}_{\delta}(a) \implies f(x) \in \mathbf{V}_{\varepsilon}(L)$$
+    Определение предела по Гейне:
+    $$\lima f(x) = L \iff \forall \{x_n\}_{n = 1}^{\infty}: x_n \in E \setminus \{a\} \sp x_n \to A \implies f(x_n) \to L$$
+    Теорема: определения по Коши и Гейне равносильны.
+    
+    \section{Критерий Коши для предела функций}
+    $$\exists \lima f(X) \in \R \iff \forall \varepsilon > 0 \sp \exists \delta > 0: \forall x_1, x_2 \in \dot{\mathbf{V}}_{\delta}(a) \implies |f(x_1) - f(x_2)| < \varepsilon$$
+
+    \section{Предел функции и арифметические операции. Предельный переход в неравенстве}
+    $f,g : E \to \R$; $a$ - точка сгущения $E$.\\
+    Пусть $\lima f(x) = A$; $\lima g(x) = B$. Тогда:
+    $$\lima (f \pm g)(x) = A+B$$
+    $$\lima (fg)(x) = AB$$
+    $$\forall x \in E \sp B \neq 0, g(x) \neq 0 \implies \lima \left(\frac{f}{g}\right)(x) = \frac{A}{B}$$
+
+    \section{Первый замечательный предел}
+    $$\lim_{x \to 0} \frac{\sin x}{x} = 1$$
+
+    \section{Односторонние пределы. Предел монотонной функции}
+    $$\lim_{x \to a^+} f(x)= \lim_{x \to a^{+ 0}} f(x) = L \iff \forall \varepsilon > 0 \sp \exists \delta > 0 : \forall x \in E : 0 < x-a < \delta \sp |f(x) - L| < \varepsilon$$
+    $$\lima f(x) = L \iff \lim_{x \to a^+} f(x) = \lim_{x \to a^-} f(x) = L$$
+
+    Теорема о пределе монотонной функции: если $f : (a,b) \to \R$ не убывает, тогда:
+    $$\lim_{x \to a^+} f(x) = \inf \limits_{(a,b)} f$$
+    $$\lim_{x \to b^-} f(x) = \sup \limits_{(a,b)} f$$
+
+    \section{Существование и единственность корня степени $n$}
+    Пусть $n \in \N; a > 0$. Тогда $\exists ! \sp \xi > 0 : \xi ^n = a$
+
+    \section{Арифметические действия и предел. Единственность предела}
+    Уже было
+
+    \section{Определение показательной функции (леммы)}
+    $$\forall \varepsilon > 0 \sp \exists k \in \N : -\varepsilon < a^{-\frac{1}{k}} < a^{\frac{1}{k}} < 1 + \varepsilon$$
+    $$\lim_{\Q \ni t \to r} a^t = a^r , r \in \Q$$
+
+    \section{Логарифм. Степенная функция.}
+    Теорема о существовании $\log$: пусть $a > 1$. $\forall y \in \R^+ \sp \exists t: a^t = y$. $t := \log_a y$\\
+    Определение степенной функции: пусть $\alpha \in \R$. Тогда $x^{\alpha} := e^{\alpha \ln x}$
+
+    \section{Второй замечательный предел}
+    $$\lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = e$$
+    Следствия:
+    $$\lim_{t \to 0} (1+t)^{\frac{1}{t}} = e$$
+    $$\lim_{t \to 0} \frac{\log (1+t)}{t} = \lim_{t \to 0} \lg (1+t)^{\frac{1}{t}} = 1$$
+    $$\lim_{s \to 0} \frac{e^s - 1}{s} = \lim_{\alpha \to 0} \frac{\alpha}{\ln (1 + \alpha)} = 1$$
+
+    \section{Символы Ландау: O-большое, o-малое, эквивалентность. Их свойства}
+    $$f(x) = o(g(x)) \iff \exists \alpha : f(x) = \alpha (x) g(x), \alpha \text{ - бесконечно малая при } x \to a$$
+    $$f(x) = O(g(x)) \iff \exists U_a, \exists \varphi \text{ - огранич. на } \dot{U}_a : f(x) = \alpha (x) g(x)$$
+    $$f \sim g \sp (x \to a) \iff \exists \psi : f(x) = \psi (x) g(x), \psi (x) \to 1$$
+
+    $$f \sim g \iff f(x) = g(x) + o(g(x))$$
+    $$\alpha = o(\beta) \implies \alpha = O(\beta)$$
+    $$o(\alpha) \pm o(\alpha) = o(\alpha)$$
+    $$const * o(\beta) = o(\beta)$$
+    $$o(\alpha)o(\beta) = o(\alpha \beta)$$
+    
+
+    \section{Эквивалентные бесконечно малые. Замена на эквивалентное при вычислении пределов}
+    $\alpha \to 0$. Тогда:
+    $$\sin \alpha \sim \alpha$$
+    $$\ln (1 + \alpha) \sim \alpha$$
+    $$e^{\alpha} - 1 \sim \alpha$$
+    $$(1 + \alpha)^a - 1 \sim \alpha a$$
+    $$\tan \alpha \sim \alpha$$
+    $$1 - \cos \alpha \sim \frac{\alpha ^2}{2}$$
+    $$\arcsin \alpha \sim \alpha$$
+    $$\arctan \alpha \sim \alpha$$
+
+    Теорема о замене на эквивалентное при вычислении пределов:\\
+    Пусть $\alpha , \beta : E \to \R$, и $a$ - предельная точка $E$;\\
+    $\alpha \sim \tilde{\alpha}, \beta \sim \tilde{\beta}$ при $x \to a$\\
+    Тогда:
+    $$\lim_{x \to a} \alpha (x) \beta (x) = \lim_{x \to a} \tilde{\alpha} (x) \tilde{\beta} (x)$$
+    $$\lim_{x \to a} \frac{\alpha (x)}{\beta (x)} = \lim_{x \to a} \frac{\tilde{\alpha} (x)}{\tilde{\beta} (x)}$$
+
+    \section{Непрерывность. точки разрыва (их классификация). Примеры}
+    Определение непрерывности:
+    $$f \text{ непрерывна в точке } x_0 \iff \lim_{x \to x_0} f(x) = f(x_0)$$
+    Классификация точек разрыва:
+    \begin{enumerate}
+        \item Разрывы I рода
+        \begin{enumerate}
+            \item $\exists$ конечный придел $\lima f(x) \neq f(a)$ (или $f(a)$ не существует). Это называется устранимым разрывом\\
+            Устранение разрыва - переопределение или доопределение функции до непрерывной.
+            $$\tilde{f}(x) := \begin{cases}
+                f(x), \forall x \neq a \\
+                \lima f(x), x = a
+            \end{cases}$$
+            \begin{itemize}
+                \item $f(x) = \text{sign}^2 (x)$
+                \item $f(x) = \frac{x^2}{x}$
+            \end{itemize}
+            \item $\exists$ конечные односторонние пределы, но они не совпадают.
+            \begin{itemize}
+                \item $f(x) = \lfloor x \rfloor$
+                \item $f(x) = \{x\}$
+            \end{itemize}
+        \end{enumerate}
+        \item Все остальные
+        \begin{enumerate}
+            \item бесконечные пределы
+            \begin{itemize}
+                \item $f(x) = \frac{1}{x}$
+                \item $f(x) = \tan x$
+            \end{itemize}
+            \item нет предела в т. $a$
+            \begin{itemize}
+                \item $f(x) = \sin \frac{1}{x}$
+                \item $f(x) = (-1)^{\lfloor \frac{1}{x} \rfloor}$
+            \end{itemize}
+        \end{enumerate}
+        \begin{itemize}
+            \item Функция Дирихле
+            $$\mathbf{D}(x) = \begin{cases}
+                0, x \not\in \Q \\
+                1, x \in \Q
+            \end{cases}$$
+            \item Функция Римана
+            $$\mathbf{R}(x) = \begin{cases}
+                0, x \not\in \Q \\
+                \frac{1}{q}, x = \frac{p}{q} \in \Q
+            \end{cases}$$
+        \end{itemize}
+    \end{enumerate}
+    
+    \section{Локальные свойства непрерывных функций}
+    \begin{enumerate}
+        \item Локальная ограниченность\\
+        Если $f$ - непрерывна в т. $a$, то $\exists U_a; \exists M > 0: \forall x \in U_a \sp |f(x)| \leq M$
+        \item Локальное сохранение знака\\
+        Если $f(a) \neq 0$, то $\exists U_a : \forall x \in U_a$ знак $f(x)$ совпадает со знаком $f(a)$.
+        \item Непрерывность суммы и произведения\\
+        $f,g: E \to \R$; $f, g$ - непр. в т. $a$, тогда $f+g$ и $fg$ непрерывны в т. $a$, и если $\exists U_a : g(x) \neq 0 \sp \forall x \in U_a$, то $\frac{f}{g}$ - непр. в т. $a$.
+        \item Непрерывность композиции\\
+        $f: X \to Y; g: Y \to \R$\\
+        $f$ - непр. в т. $a \in X \implies g \circ f$ - непр. в т. $a$.
+    \end{enumerate}
+
+    \section{Теорема о промежуточном значении непрерывной функциии (Больцано-Коши). Т.о сохранении промежутка}
+    $$C(E) := \{f: E \to \R , f \text{ - непр. на } E\}$$
+    $$f \in C (E) \iff \forall x_0 \in E \lim_{x \to x_0} f(x) = f(x_0)$$
+    Теорема Больцано-Коши: Пусть $f \in C[a,b]$ и $f(a)f(b) < 0$. Тогда $\exists c \in (a,b): f(c) = 0$.\\
+    Теорема о промежуточном значении непрерывной функции: Пусть $f \in C[a,b]; f(a) = A; f(b) = B \neq A$. Тогда $\forall C$, лежащего между $A$ и $B$ $\exists c \in (a,b): f(c) = C$.\\
+    Теорема: непрерывный образ промежутка - промежуток.\\
+    $f \in C <a,b> \implies f(<a, b>) = <m, M>$.
+
+    \section{Теорема Вейерштрасса о функции, непрерывной на отрезке}
+    Непрерывная функция на отрезке ограничена и достигает своего $\min$ и $\max$
+
+    \section{Равномерная непрерывность. Примеры. Теорема Кантора}
+    $f: E \to \R$ называется равномерно непрерывной, если
+    $$\forall \varepsilon > 0 \sp \exists \delta > 0: \forall x_1, x_2 \in E \sp |x_1 - x_2| < \delta \implies |f(x_1) - f(x_2)| < \varepsilon$$
+    \begin{itemize}
+        \item $f(x) = x^2$ не является равномерно непр на $\R$
+        \item $f(x) = \sin \frac{1}{x}$ не является равномерно непр. на $(0, 1)$
+        \item $f(x) = \sqrt{x}$ является равномерно непрерывной на $[0, 1]$
+    \end{itemize}
+    Теорема Кантора: непрерывная функция на отрезке является на нём равномерно непрерывной.
+
+    Модуль непрерывности:
+    $$\omega _f (E, \delta) := \sup \{|f(x) - f(y)|: x, y \in E, |x-y| < \delta\}$$
+
+    \section{Теорема о монотонности обратимой непрерывной функции}
+    Пусть $f: X \to Y$ - биекция $f$ - строго монотонна.\\
+    Тогда $\exists f^{-1} : Y \to X$, $f^{-1}$ строго монотонна, причём знак монотонности сохраняется.
+
+    \section{Критерий непрерывности монотонной функции}
+    Если $f$ - монотонная функция на $[a, b]$, то
+    $$f(x) \in C([a, b]) \iff f([a, b]) = [\min (f(a), f(b)), \max (f(a), f(b))]$$
+
+    \section{Производная. Дифференциал. Односторонняя производная. Непрерывность деффирицируемой функции.}
+    $$f' (x_0) := \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x-x_0} = \lim_{h \to 0} \frac{f(x_0 + h) - f(x_0)}{h} = \lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x} =: \frac{df}{dx}$$
+    Дефференциал $df = f'(x_0) dx$. $df: dx \mapsto f'(x_0) dx$
+
+    Односторонняя производная:
+    $$f'_+(x_0) := \lim_{x \to x_0^+} \frac{f(x) - f(x_0)}{x - x_0}$$
+    $$f'_-(x_0) := \lim_{x \to x_0^-} \frac{f(x) - f(x_0)}{x - x_0}$$
+
+    Если $f$ - дифф.-ма в т. $x_0$, то она непрерывна в т. $x_0$.
+
+    \section{Правила дифференцирования. Дифференцирование обратной функции. Дифференцирование композиции}
+    Пусть $f, g: (a,b) \to \R$ дифференцируемы в точке $x \in (a,b)$. Тогда:\\
+    \begin{itemize}
+        \item $(f+g)'(x) = f'(x) + g'(x)$
+        \item $(fg)'(x) = f'(x)g(x) + f(x)g'(x)$
+        \item $\displaystyle g(x) \neq 0 \implies \left(\frac{f}{g}\right)'(x) = \frac{f'(x)g(x) - f(x)g'(x)}{g^2(x)}$
+    \end{itemize}
+
+    Теорема о дифференцировании обратной функции:\\
+    $f: (a,b) \to \R$; $f \in C(a,b)$ и монотонна.\\
+    $f$ - дифф-ма в т. $x_0 \in (a,b)$ и $f'(x_0) \neq 0$\\
+    Тогда обратная функция $f^{-1}$ дифф-ма в т. $f(x_0) =: y_0$, причём $(f^{-1})'(y_0) = \dfrac{1}{f'(x_0)}$
+
+    Теорема о дифф-ии композиции:\\
+    Пусть $f(x_0)$ - дифф-ма в т. $x_0$, а $g(y)$ дифф-ма в т. $y_0 = f(x_0)$\\
+    Тогда $g \circ f$ - дифф-ма в т. $x_0$, причём
+    $$(g \circ f)'(x_0) = g'(y_0)f'(x_0) = g'(f(x_0))f'(x_0)$$
+
+    \section{Интерполяционный многочлен Лагранжа}
+    $M_k(x_k, y_k), 0 \leq k \leq n, x_k \neq x_j \sp \forall k \neq j$\\
+    Задача: найти многочлен степени $\leq n$, такой, что $\forall k \sp P(x_k) = y_k$.
+    $$Q(x) := \prod_{k = 0}^n (x-x_k)$$
+    $$P(x) := \sum_{i = 0}^{n} \frac{Q(x)}{(x-x_i)Q'(x_i)}y_i = \sum_{i = 0}^n \left(y_i \prod_{j = 1 j \neq i}^n \frac{x-x_j}{x_i-x_j}\right)$$
+    $$P(x) = \begin{cases}
+        \sum \limits_{i = 0}^{n} \dfrac{Q(x)}{(x-x_i)Q'(x_i)}y_i, \sp x \neq x_i \\
+        y_i, \sp x = x_i
+    \end{cases}$$
+
+    \section{Производные высших порядков. Правило Лейбница}
+    $$f''(x_0) := \lim_{h \to 0} \frac{f'(x_0 + h)-f'(x_0)}{h} =: \frac{d^2f}{dx^2}(x_0)$$
+    Если $f^{(n)}$ определена в окрестности т. $x_0$, то говорят, что $f$ - $(n+1)$-дифф-ма, если $\exists (f^{(n)})'(x_0) = f^{(n+1)}(x_0)$
+
+    Правило Лейбница:
+    $$(u \cdot v)^{(n)} = \sum_{k = 0}^n C_n^k \cdot u^{(k)} \cdot v^{(n-k)}$$
+
+    \section{Локальный экстремум. Теорема Ферма}
+    $f: (a,b) \to \R$. $x_0 \in (a,b)$ называется точкой локального экстремума, если $\exists U(x_0) : \forall x \in U(x_0) \sp \begin{cases}
+        f(x) \leq f(x_0) \text{. тогда это точка локального } \max \\
+        f(x) \geq f(x_0) \text{. тогда это точка локального } \min \\
+    \end{cases}$
+
+    Теорема Ферма: Пусть $f$ определена в окрестности точки $x_0$ и дифф-ма в т. $x_0$. Предположим, что $x_0$ - точка локального экстремума $f$\\
+    Тогда $f'(x_0) = 0$
+    
+    \section{Теорема Ролля, Лагранжа, Коши}
+    Теорема Ролля: $f \in C[a,b]$, $f$ - дифф-ма на $(a,b)$, $f(a) = f(b)$. Тогда $\exists c \in (a,b): f'(c) = 0$
+    Теорема Лагранжа: $f \in C[a,b]$, $f$ - дифф-ма на $(a,b)$, тогда $\exists c \in (a,b): f'(c) = \dfrac{f(b) - f(a)}{b-a}$
+    Теорема Коши о среднем значении: Пусть $f, g \in C[a,b]$ и дифф-мы на $(a,b)$. Тогда $\exists c \in (a,b): \dfrac{f'(c)}{g'(c)} = \dfrac{f(b) - f(a)}{g(b) - g(a)}$
+    
+    \section{Следствие т. Лагранжа (о монотонности, о равномерной непрерывности)}
+    \begin{enumerate}
+        \item Если $f$ - дифф-ма на $(a,b)$ и $f'(x) > 0 \sp \forall x \in (a,b)$, то $f$ строго возрастает на $(a,b)$.
+        \item Если $f$ - дифф-ма на $(a, b)$ и $f'(x) < 0 \sp \forall x \in (a,b)$, то $f$ строго убывает на $(a, b)$
+        \item $f' \geq 0 \implies f$ - нестрого возрастает
+        \item $f' \leq 0 \implies f$ - нестрого убывает
+        \item $f'(x) = 0 \forall x \in (a,b) \implies f = const$
+        \item $f$ - $n$ раз дифф-ма и $f^{(n)}(x) = 0 \sp \forall x \in (a,b) \implies f$ - многочлен степени $\leq n-1$
+        \item Если $f$ - дифф-ма на $<a, b>$, причём $\exists M < \infty: \forall x \in <a,b> \sp |f'(x)| < M$, тогда $f$ - равномерно непрерывна на $<a, b>$
+    \end{enumerate}
+
+    \section{Теорема Дарбу}
+    Пусть $f$ - дифф-ма на $[a, b]$. Тогда $f'$ принимает каждое значение из промежутка от $f'(a)$ до $f'(b)$.
+
+    \section{Правило Лопиталя}
+    Пусть $f, g$ - дифф-мы на $(a,b)$, причём $g' \neq 0$ на $(a,b)$.\\
+    Предположим, что $\ds \lim_{x \to a^+} f(x) = \lim_{x \to a^+} g(x) = 0 \lor \infty$ и $\ds \lim_{x \to a^+} \frac{f'(x)}{g'(x)} = L \in \overline{\R}$.\\
+    Тогда $\ds \lim_{x \to a^+} \frac{f(x)}{g(x)} = L$
+
+    \section{Неравенства: обобщённое Бернулли, Юнга, Гёльдера, Минковского}
+    \begin{enumerate}
+        \item $\dfrac{2x}{\pi} \leq \sin x \leq x,\sp \forall x \in \left[0, \dfrac{\pi}{2}\right]$
+        \item $\dfrac{x}{1+x} < \ln (1+x) < x \sp \forall x > -1, x \neq 0$
+        \item Обобщённое неравенство Бернулли: $\forall t > -1
+        \begin{cases}
+            (1+t)^{\alpha} \leq 1 + \alpha t, \sp \forall \alpha \in (0,1)\\
+            (1+t)^{\alpha} \geq 1 + \alpha t, \sp \forall \alpha \in \R \setminus (0,1)
+        \end{cases}$z
+        \item Неравенсво Юнга: если $a, b > 0; \sp p, q > 1 : \dfrac{1}{p} + \dfrac{1}{q} = 1$, то $ab \leq \dfrac{a^p}{p} + \dfrac{b^q}{q}$
+        \item Неравенство Гёльдера: $p,q > 1: \dfrac{1}{p} + \dfrac{1}{q} = 1; \sp x_j, y_j \geq 0 \sp \forall 1 \leq j \leq n$. Тогда
+        $$\sum_{j=1}^nx_j \cdot y_j \leq \left(\sum_{j=1}^n x_j^p\right)^{\frac{1}{p}} \cdot \left(\sum_{j=1}^n y_j^q\right)^{\frac{1}{q}}$$
+
+        \item Неравенст Коши-Буняковского-Шварца (КБШ):
+        $$\sum_{j=1}^nx_j \cdot y_j \leq \sqrt{\sum_{j=1}^n x_j^2} \cdot \sqrt{\sum_{j=1}^n y_j^2}$$
+
+        \item Неравенст Минковского: $x_j, y_j > 0; \sp p > 1$
+        $$\left(\sum_{j=1}^n (x_j + y_j)^p\right)^{\frac{1}{p}} \leq \left(\sum_{j=1}^n x_j^p\right)^{\frac{1}{p}} + \left(\sum_{j=1}^n y_j^p\right)^{\frac{1}{p}}$$
+    \end{enumerate}
+
+    \section{Формула Тейлора с остатком в форме Пеано}
+    Пусть $f$ $n$ раз дифф-ма в т. $x_0$. Тогда:
+    $$f(x) = \sum_{j = 0}^n \frac{f^{(j)}(x_0)}{j!} \cdot (x-x_0)^j + o((x-x_0)^n), \sp x \to x_0$$
+
+    \section{Формула Тейлора с остатком в форме Лагранжа}
+    $f \in C^n<a, b>$ и $n+1$ раз дифф-ма на $(a, b)$; $x_0, x \in <a,b>$.\\
+    Тогда $\exists \xi$ между $x_0$ и $x$; $x_0 \neq x$\\
+    $$R_{n, x_0, f}(x) := \frac{f^{(n+1)}(\xi)}{(n+1)!} \cdot (x-x_0)^{n+1}$$
+    $$f(x) = \sum_{j = 0}^n \frac{f^{(j)}(x_0)}{j!} \cdot (x-x_0)^j + R_{n, x_0, f}(x) \sp x \to x_0$$
+
+    \section{Иррациональность числа $e$}
+    Теорема: число $e$ иррациональное.
+
+    \section{}
+    Тебе попался гроб. F
+
+    \section{Выпуклость. Лемма о трёх хордах}
+    $f: <a,b> \to \R$. $f$ называется выпуклой (вниз) на $<a, b>$, если $\forall \alpha , \beta \in <a, b>$ часть графика $y = f(x)$ между $\alpha$ и $\beta$ лежит не выше хорды, соединяющей точки графика $(\alpha ; f(\alpha))$ и $(\beta ; f(\beta))$\\
+
+    Лемма о трёх хордах: $f: <a, b> \to \R$ - выпукла на $<a, b>$ и $a \leq x_1 < x_2 < x_3 \leq b$. Тогда:
+    $$\frac{f(x_2) - f(x_1)}{x_2 - x_1} \leq \frac{f(x_3) - f(x_1)}{x_3 - x_1} \leq \frac{f(x_3) - f(x_2)}{x_3 - x_2}$$
+    
+    \section{Односторонняя дифференцируемость выпуклой функции}
+    $f: <a, b> \to \R$, $f$ - выпуклая (вниз). Тогда:
+    $$\forall x \in (a,b) \sp \exists f'_-(x), f'_+(x) \in \R \land f'_-(x) \leq f'_+(x)$$
+
+    \section{Выпуклость и касательная. Опорная прямая}
+    $f: <a, b> \to \R$. Предположим, что $f$ - дифф-ма на $<a, b>$. Тогда:
+    $$\forall x, x_0 \in <a, b> \sp f(x) \geq f(x_0) + f'(x_0)(x-x_0)$$
+
+    $f: <a, b> \to \R$, $x_0 \in <a, b>$. Прямая $y=kx+b$ называется опорной прямой к функции $f$ в т. $x_0$, если
+    \begin{enumerate}
+        \item $f(x_0) = kx_0 + b$
+        \item $f(x) \geq kx + b \sp \forall x \in <a,b>$
+    \end{enumerate}
+
+    \section{Критерий выпуклости в терминах производных}
+    Пусть $f: <a,b> \to \R$; $f \in C(<a,b>)$
+    \begin{itemize}
+        \item если $f$ дифф-ма на $(a,b)$, то $f$ - выпукла на $<a, b> \iff f'$ нестрого возр. на $(a, b)$
+        \item если $f$ дважды дифф-ма на $(a, b)$, то $f$ - выпукла на $<a, b> \iff f''(x) \geq 0 \sp \forall x \in (a,b)$
+    \end{itemize}
+
+    \section{Неравенство Йенсена}
+    Пусть $f$ - выпукла на $<a,b>$; $x_1, \ldots , x_n \in <a,b>$. Тогда:
+    $$f\left(\sum_{j=1}^n \lambda_j x_j\right) \leq \sum_{j=1}^n \lambda_j f(x_j)$$
+    где $\lambda_j \geq 0 \sp \forall j = 1\ldots n$ и $\ds \sum_{j = 1}^n \lambda_j = 1$.
+
+\end{document}
