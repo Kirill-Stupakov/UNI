@@ -6,13 +6,18 @@ namespace HW_01_1
     {
         static void Main(string[] args)
         {
-            if (Test.SortTest() == true)
+            if (Test.SortTest())
+            {
                 Console.WriteLine("All tests passed!");
+            }
             else
+            {
+                Console.WriteLine("Tests failed!");
                 return;
+            }
             
-            string[] str = Console.ReadLine().Split(' ');
-            int[] array = new int[str.Length];
+            var str = Console.ReadLine().Split(' ');
+            var array = new int[str.Length];
             
             for (int i = 0; i < array.Length; i++)
                 array[i] = int.Parse(str[i]);
