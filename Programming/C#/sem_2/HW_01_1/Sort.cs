@@ -1,6 +1,6 @@
 namespace HW_01_1
 {
-    public class Sort
+    public static class Sort
     {
         public static void SelectionSort(int[] array)
         {
