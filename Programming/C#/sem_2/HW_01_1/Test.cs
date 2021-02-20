@@ -45,7 +45,7 @@ namespace HW_01_1
             {
                 if (arraySorted[i] != arrayToCheck[i])
                 {
-                    Console.WriteLine($"==Result mismatch==");
+                    Console.WriteLine("==Result mismatch==");
 
                     Console.Write("Unsorted:        ");
                     foreach (int x in arrayShuffled)
