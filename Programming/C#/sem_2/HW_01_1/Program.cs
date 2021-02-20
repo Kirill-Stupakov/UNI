@@ -6,6 +6,11 @@ namespace HW_01_1
     {
         static void Main(string[] args)
         {
+            if (Test.SortTest() == true)
+                Console.WriteLine("All tests passed!");
+            else
+                return;
+            
             string[] str = Console.ReadLine().Split(' ');
             int[] array = new int[str.Length];
             
@@ -17,10 +22,6 @@ namespace HW_01_1
             foreach (int x in array)
                 Console.Write($"{x} ");
             Console.WriteLine();
-
-            if (Test.SortTest() == true)
-                Console.WriteLine("All tests passed!");
-
         }
     }
 }
