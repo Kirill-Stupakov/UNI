@@ -6,16 +6,27 @@ namespace HW_01_1
     {
         static void Main(string[] args)
         {
-            // string[] str = Console.ReadLine().Split(' ');
-            // int[] array = new int[str.Length];
-            
-            // for (int i = 0; i < array.Length; i++)
-            //     array[i] = int.Parse(str[i]);
-
-            // SelectionSort(array);
-            if (Test.SortTest() == true)
+            if (Test.SortTest())
+            {
                 Console.WriteLine("All tests passed!");
+            }
+            else
+            {
+                Console.WriteLine("Tests failed!");
+                return;
+            }
+            
+            var str = Console.ReadLine().Split(' ');
+            var array = new int[str.Length];
+            
+            for (int i = 0; i < array.Length; i++)
+                array[i] = int.Parse(str[i]);
 
+            Sort.SelectionSort(array);
+
+            foreach (int x in array)
+                Console.Write($"{x} ");
+            Console.WriteLine();
         }
     }
 }
